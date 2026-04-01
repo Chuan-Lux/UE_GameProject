@@ -47,6 +47,9 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Move")
 	bool IsAbleMevement=true;
 
+	UPROPERTY(BlueprintReadWrite, Category = "Move")
+	bool IsAbleJump = true;
+
 	UPROPERTY(BlueprintReadWrite, Category = "Target")
 	AActor* Target;
 
