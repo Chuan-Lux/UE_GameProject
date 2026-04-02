@@ -56,6 +56,33 @@ enum class EGrowthData :uint8
 	Stamina UMETA(DisplayName = "Stamina")
 };
 
+UENUM(BluePrintType)
+enum class EAttackType:uint8
+{
+	None UMETA(DisplayName = "None"),
+	Melee UMETA(DisplayName = "Melee"),
+	Ranged UMETA(DisplayName = "Ranged")
+};
+
+
+USTRUCT(BlueprintType)
+struct FDamageStruct
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float ATK = 0.0f;
+
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Increase = 0.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float CR = 0.0f;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float CD = 0.0f;
+};
 
 class GAMEPROJECT_API MyClass
 {

@@ -27,8 +27,8 @@ public:
 	virtual void OnDeath_Implementation() = 0;
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "State")
-	void OnDmg(const FHitResult& HitResult, const FVector& AttackVec, const float& Force);
-	virtual void OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force) = 0;
+	void OnDmg(const FHitResult& HitResult, const FVector& AttackVec, const float& Force, const float& Damage,bool bIsCritical);
+	virtual void OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force,const float& Damage,bool bIsCritical) = 0;
 
 
 	/*UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "State")

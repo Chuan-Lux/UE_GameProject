@@ -27,5 +27,9 @@ public:
 	//UI≥ØœÚ…„œÒª˙
 	UFUNCTION(BlueprintCallable)
 	static void WidgetToCamera(USceneComponent* Widget);
+
+	//…À∫¶º∆À„
+	UFUNCTION(BlueprintPure)
+	static float DamageCalculation(const float ATK, const float Increase, const float Critical_Rate, const float Critical_Damage,bool& bIsCritical);
 	
 };

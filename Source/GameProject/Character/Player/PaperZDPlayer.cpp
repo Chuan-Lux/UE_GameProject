@@ -16,7 +16,7 @@ void APaperZDPlayer::OnDeath_Implementation()
 {
 }
 
-void APaperZDPlayer::OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force)
+void APaperZDPlayer::OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force, const float& Damage,bool bIsCritical)
 {
 }
 
@@ -57,4 +57,27 @@ APaperZDEnemy* APaperZDPlayer::LookForEnemy(float MaxDistance, TArray<AActor*> A
 		}
 	}
 	return CurrentEnemy;
+}
+
+FDamageStruct APaperZDPlayer::GetCharacterBasicData(EAttackType AttackType)
+{
+	FDamageStruct Stats;
+	Stats.ATK = ATK;
+	Stats.CR = Critical_Rate;
+	Stats.CD = Critical_Damage;
+	switch (AttackType)
+	{
+	case EAttackType::None:
+		Stats.Increase = 1;
+		break;
+	case EAttackType::Melee:
+		Stats.Increase = Melee_Damage_Increase;
+		break;
+	case EAttackType::Ranged:
+		Stats.Increase = Ranged_Damage_Increase;
+		break;
+	default:
+		break;
+	}
+	return Stats;
 }

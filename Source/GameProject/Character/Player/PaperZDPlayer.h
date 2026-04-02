@@ -6,6 +6,7 @@
 #include "ActorComponent/HealthComp.h"
 #include "ActorComponent/HitStopComp.h"
 #include "ActorComponent/InputRecorderComp.h"
+#include "ActorComponent/SkillComponent.h"
 #include "Character/Enemy/PaperZDEnemy.h"
 #include "Interface/HealthInterface.h"
 #include "MyClass.h"
@@ -25,7 +26,7 @@ public:
 
 	virtual void OnDeath_Implementation() override;
 
-	virtual void OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force);
+	virtual void OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force,const float& Damage,bool bIsCritical);
 
 	//////Function
 	//设置碰撞方向；
@@ -43,6 +44,12 @@ public:
 	//角色状态设置
 	UPROPERTY(BlueprintReadWrite, Category = "State")
 	ECharacterState NowState;
+
+	//根据数值进行设定
+	UFUNCTION(BlueprintImplementableEvent, Category = "State")
+	void Set_Basic_Data();
+
+	
 
 	UPROPERTY(BlueprintReadWrite, Category = "Move")
 	bool IsAbleMevement=true;
@@ -63,5 +70,30 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InputRecoder", meta = (AllowPrivateAccess = "true"))
 	class UInputRecorderComp*InputRecorder;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Slot", meta = (AllowPrivateAccess="true"))
+	class USkillComponent* USkillComp;
 	
+
+	//角色攻击数据
+public:
+	//物理增伤
+	UPROPERTY(BlueprintReadWrite)
+	float Melee_Damage_Increase;
+
+	//远程增伤
+	UPROPERTY(BlueprintReadWrite)
+	float  Ranged_Damage_Increase;
+
+	UPROPERTY(BlueprintReadWrite)
+	float  ATK;
+
+	
+	UPROPERTY(BlueprintReadWrite)
+	float Critical_Rate;
+
+	UPROPERTY(BlueprintReadWrite)
+	float Critical_Damage;
+
+	UFUNCTION(BlueprintPure)
+	FDamageStruct GetCharacterBasicData(EAttackType AttackType);
 };

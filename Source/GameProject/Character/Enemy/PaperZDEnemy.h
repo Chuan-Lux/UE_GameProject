@@ -22,7 +22,7 @@ public:
 
 	virtual void OnDeath_Implementation() override;
 
-	virtual void OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force);
+	virtual void OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force, const float& Damage,bool bIsCritical);
 
 	UPROPERTY(VisibleAnywhere,BlueprintReadWrite)
 	ACharacter* Target;

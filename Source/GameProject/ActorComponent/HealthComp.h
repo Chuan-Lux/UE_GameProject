@@ -6,6 +6,8 @@
 #include "Components/ActorComponent.h"
 #include "HealthComp.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBroadDeath);
+
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class GAMEPROJECT_API UHealthComp : public UActorComponent
@@ -17,6 +19,13 @@ public:
 
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
+	//死亡事件
+	UPROPERTY(BlueprintAssignable, Category = "Event")
+	FBroadDeath BroadDeath;
+
+	UFUNCTION(BlueprintCallable)
+	void OnBroadDeath();
+	//基础设置
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
 	float MaxHealth = 100.f;
 	
@@ -70,4 +79,12 @@ protected:
 	
 
 		
+public:
+	//重新设置生命
+	UFUNCTION(BlueprintCallable)
+	void ReSetMaxHealth(float value,bool IsCurrentGetMax);
+
+	//增加新的生命上限
+	UFUNCTION(BlueprintCallable)
+	void AddMaxHealth(float value, bool IsCurrentGetMax);
 };

@@ -54,6 +54,32 @@ void UHealthComp::BeginPlay()
 	
 }
 
+void UHealthComp::ReSetMaxHealth(float value, bool IsCurrentGetMax)
+{
+	MaxHealth = value;
+	if (IsCurrentGetMax)
+	{
+		CurrentHealth = MaxHealth;
+	}
+	else
+	{
+		return;
+	}
+}
+
+void UHealthComp::AddMaxHealth(float value, bool IsCurrentGetMax)
+{
+	MaxHealth += value;
+	if (IsCurrentGetMax)
+	{
+		CurrentHealth = MaxHealth;
+	}
+	else
+	{
+		CurrentHealth += value;
+	}
+}
+
 
 // Called every frame
 void UHealthComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -63,6 +89,11 @@ void UHealthComp::TickComponent(float DeltaTime, ELevelTick TickType, FActorComp
 	// ...
 }
 
+void UHealthComp::OnBroadDeath()
+{
+	BroadDeath.Broadcast();
+}
+
 void UHealthComp::LoseHealth(float Amount)
 {
 	//CurrentHealth -= CalculateDamage(Amount);
@@ -70,6 +101,7 @@ void UHealthComp::LoseHealth(float Amount)
 	if (CurrentHealth <= 0)
 	{
 		CurrentHealth = 0;
+		OnBroadDeath();
 	}
 }
 

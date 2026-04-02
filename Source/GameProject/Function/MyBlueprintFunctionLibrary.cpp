@@ -77,3 +77,16 @@ void UMyBlueprintFunctionLibrary::WidgetToCamera(USceneComponent* Widget)
 	FRotator NewRotation = Direction.Rotation();
 	Widget->SetWorldRotation(NewRotation);
 }
+
+float UMyBlueprintFunctionLibrary::DamageCalculation(const float ATK, const float Increase, const float Critical_Rate, const float Critical_Damage, bool& bIsCritical)
+{
+	float RandomValue = FMath::FRand();
+	bool IsCritical= RandomValue <= Critical_Rate;
+	float Critical = 1;
+	if (IsCritical)
+	{
+		Critical = 1 + Critical_Damage;
+	}
+	float damage = ATK * (1 + Increase) * Critical;
+	return damage;
+}

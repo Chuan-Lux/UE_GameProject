@@ -3,6 +3,7 @@
 
 #include "Character/Enemy/PaperZDEnemy.h"
 
+
 APaperZDEnemy::APaperZDEnemy()
 {
 	HealthComp = CreateDefaultSubobject<UHealthComp>(TEXT("HealthComp"));
@@ -13,6 +14,6 @@ void APaperZDEnemy::OnDeath_Implementation()
 {
 }
 
-void APaperZDEnemy::OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force)
+void APaperZDEnemy::OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force, const float& Damage,bool bIsCritical)
 {
 }
