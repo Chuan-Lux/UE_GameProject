@@ -8,6 +8,7 @@ APaperZDPlayer::APaperZDPlayer()
 	HealthComp = CreateDefaultSubobject<UHealthComp>(TEXT("HealthComp"));
 	HitStopComp = CreateDefaultSubobject<UHitStopComp>(TEXT("HitStopComp"));
 	InputRecorder = CreateDefaultSubobject<UInputRecorderComp>(TEXT("InputRecorderComp"));
+	GethitComp = CreateDefaultSubobject<UGethitComp>(TEXT("GethitComp"));
 
 	NowState = ECharacterState::None;
 }

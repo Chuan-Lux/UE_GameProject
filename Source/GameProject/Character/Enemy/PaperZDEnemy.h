@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "ActorComponent/HealthComp.h"
 #include "ActorComponent/InputRecorderComp.h"
+#include "ActorComponent/GethitComp.h"
 #include "Interface/HealthInterface.h"
 #include "PaperZDCharacter.h"
 #include "PaperZDEnemy.generated.h"
@@ -39,5 +40,6 @@ private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Input", meta = (AllowPrivateAccess = "true"))
 	class UInputRecorderComp* InputRecorderComp;
 
-	
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GetHit", meta = (AllowPrivateAccess = "true"))
+	class UGethitComp* GethitComp;
 };

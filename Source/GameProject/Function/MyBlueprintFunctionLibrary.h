@@ -28,6 +28,11 @@ public:
 	UFUNCTION(BlueprintCallable)
 	static void WidgetToCamera(USceneComponent* Widget);
 
+	////根据方向选择动画
+	//UFUNCTION(BlueprintPure)
+	//static UPaperZDAnimSequence* PaperAnim();
+
+
 	//伤害计算
 	UFUNCTION(BlueprintPure)
 	static float DamageCalculation(const float ATK, const float Increase, const float Critical_Rate, const float Critical_Damage,bool& bIsCritical);

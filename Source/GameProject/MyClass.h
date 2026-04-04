@@ -64,7 +64,7 @@ enum class EAttackType:uint8
 	Ranged UMETA(DisplayName = "Ranged")
 };
 
-
+//角色攻击数据
 USTRUCT(BlueprintType)
 struct FDamageStruct
 {
@@ -83,6 +83,18 @@ struct FDamageStruct
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	float CD = 0.0f;
 };
+
+////角色八向图
+//USTRUCT(BlueprintType)
+//struct FEightDirAnimSeq
+//{
+//	GENERATED_BODY()
+//
+//	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+//	UPaperZDAnimation*
+//
+//
+//};
 
 class GAMEPROJECT_API MyClass
 {

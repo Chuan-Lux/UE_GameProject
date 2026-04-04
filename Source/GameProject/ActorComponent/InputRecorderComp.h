@@ -44,6 +44,7 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void UpdateDirectionHistory(FVector2D InputMovement);
 
+	//获得目标相对方向
 	UFUNCTION(BlueprintPure)
 	FVector2D GetTargetDirection(AActor*target);
 
@@ -56,9 +57,11 @@ public:
 	UFUNCTION(BlueprintPure)
 	FVector2D GetNowInputVector();
 
+	//转换
 	UFUNCTION(BlueprintPure)
 	EInputDirection VectorToDir(FVector2D vector);
 
+	//转换
 	UFUNCTION(BlueprintPure)
 	FVector2D DirToVector(EInputDirection Dir);
 

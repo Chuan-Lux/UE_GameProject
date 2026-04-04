@@ -8,6 +8,7 @@ APaperZDEnemy::APaperZDEnemy()
 {
 	HealthComp = CreateDefaultSubobject<UHealthComp>(TEXT("HealthComp"));
 	InputRecorderComp = CreateDefaultSubobject<UInputRecorderComp>(TEXT("InputRecorderComp"));
+	GethitComp = CreateDefaultSubobject<UGethitComp>(TEXT("GethitComp"));
 }
 
 void APaperZDEnemy::OnDeath_Implementation()

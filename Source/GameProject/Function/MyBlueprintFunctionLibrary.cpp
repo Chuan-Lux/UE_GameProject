@@ -81,9 +81,9 @@ void UMyBlueprintFunctionLibrary::WidgetToCamera(USceneComponent* Widget)
 float UMyBlueprintFunctionLibrary::DamageCalculation(const float ATK, const float Increase, const float Critical_Rate, const float Critical_Damage, bool& bIsCritical)
 {
 	float RandomValue = FMath::FRand();
-	bool IsCritical= RandomValue <= Critical_Rate;
+	bIsCritical= RandomValue <= Critical_Rate;
 	float Critical = 1;
-	if (IsCritical)
+	if (bIsCritical)
 	{
 		Critical = 1 + Critical_Damage;
 	}

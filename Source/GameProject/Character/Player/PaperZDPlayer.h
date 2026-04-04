@@ -72,6 +72,9 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Slot", meta = (AllowPrivateAccess="true"))
 	class USkillComponent* USkillComp;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GetHit", meta = (AllowPrivateAccess = "true"))
+	class UGethitComp* GethitComp;
 	
 
 	//½ÇÉ«¹¥»÷Êý¾Ý

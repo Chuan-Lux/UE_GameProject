@@ -31,5 +31,7 @@ protected:
 private:
 	FTimerHandle HitStopWorldTimeHandle;
 	FTimerHandle HitStopLocalTimeHandle;
+
+
 		
 };

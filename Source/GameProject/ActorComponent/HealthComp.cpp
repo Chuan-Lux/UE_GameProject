@@ -17,34 +17,6 @@ UHealthComp::UHealthComp()
 }
 
 
-void UHealthComp::OnHitOffset(FVector HitDir, float Force, float Duration)
-{
-	GetWorld()->GetTimerManager().ClearTimer(GetHitTimeHandle);
-	FVector Distance = HitDir.GetSafeNormal() * Force;
-
-	ElapsedTime = 0.0f;
-	ElapsedDuration = Duration;
-	Offset = Distance;
-
-	GetWorld()->GetTimerManager().SetTimer(
-		GetHitTimeHandle,
-		this,
-		&UHealthComp::UpdateHitOffset,
-		0.016f,
-		true     // Ñ­»·
-	);
-}
-
-void UHealthComp::UpdateHitOffset()
-{
-	ElapsedTime += 0.016f;
-	GetOwner()->AddActorWorldOffset(Offset);
-	if (ElapsedTime>=ElapsedDuration)
-	{
-		GetWorld()->GetTimerManager().ClearTimer(GetHitTimeHandle);
-	}
-}
-
 // Called when the game starts
 void UHealthComp::BeginPlay()
 {

@@ -56,20 +56,11 @@ public:
 		return MaxHealth;
 	}
 
-	UFUNCTION(BlueprintCallable, Category = "GitHit")
-	void OnHitOffset(FVector HitDir,float Force,float Duration);
 
-	UFUNCTION()
-	void UpdateHitOffset();
 
 private:
 	float CurrentHealth = 100.f;
 
-	//ÊÜ»÷¼ÆÊ±Æ÷
-	FTimerHandle GetHitTimeHandle;
-	float ElapsedTime;
-	float ElapsedDuration;
-	FVector Offset;
 
 
 protected:
