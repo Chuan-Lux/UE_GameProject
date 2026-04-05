@@ -3,16 +3,15 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ActorComponent/HealthComp.h"
-#include "ActorComponent/InputRecorderComp.h"
-#include "ActorComponent/GethitComp.h"
 #include "Interface/HealthInterface.h"
 #include "PaperZDCharacter.h"
 #include "PaperZDEnemy.generated.h"
 
-/**
- * 
- */
+
+class UHealthComp;
+class UInputRecorderComp;
+class UGethitComp;
+
 UCLASS()
 class GAMEPROJECT_API APaperZDEnemy : public APaperZDCharacter,public IHealthInterface
 {

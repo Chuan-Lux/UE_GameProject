@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Interface/HealthInterface.h"
 #include "HealthComp.generated.h"
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FBroadDeath);
@@ -32,6 +33,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Health")
 	float Defence = 100;
 
+
+	//µ÷ÓÃº¯Êý
 	UFUNCTION(BlueprintCallable)
 	void LoseHealth(float Amount);
 
@@ -60,8 +63,10 @@ public:
 
 private:
 	float CurrentHealth = 100.f;
+	
+	IHealthInterface* HealthInterface;
 
-
+	void DeathDelegate();
 
 protected:
 	// Called when the game starts

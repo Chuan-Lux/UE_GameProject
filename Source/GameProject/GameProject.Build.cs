@@ -20,10 +20,13 @@ public class GameProject : ModuleRules
 			"GameplayStateTreeModule",
 			"Niagara",
 			"UMG",
-			"Slate"
+			"Slate",
+            "GameplayAbilities",      // Ìí¼Ó GAS Ö÷Ä£¿é
+            "GameplayTags",           // GAS ÒÀÀµ
+            "GameplayTasks"           // GAS ÒÀÀµ
 		});
 
-		PrivateDependencyModuleNames.AddRange(new string[] { });
+		PrivateDependencyModuleNames.AddRange(new string[] {});
 
 		PublicIncludePaths.AddRange(new string[] {
 			"GameProject",

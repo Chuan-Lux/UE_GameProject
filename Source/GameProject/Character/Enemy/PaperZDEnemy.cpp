@@ -2,6 +2,10 @@
 
 
 #include "Character/Enemy/PaperZDEnemy.h"
+#include "ActorComponent/HealthComp.h"
+#include "ActorComponent/InputRecorderComp.h"
+#include "ActorComponent/GethitComp.h"
+
 
 
 APaperZDEnemy::APaperZDEnemy()
@@ -13,6 +17,8 @@ APaperZDEnemy::APaperZDEnemy()
 
 void APaperZDEnemy::OnDeath_Implementation()
 {
+	UE_LOG(LogTemp, Log, TEXT("¹ÖÎïËÀÍö"));
+	this-> Destroy();
 }
 
 void APaperZDEnemy::OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force, const float& Damage,bool bIsCritical)

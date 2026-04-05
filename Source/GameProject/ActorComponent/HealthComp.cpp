@@ -17,14 +17,30 @@ UHealthComp::UHealthComp()
 }
 
 
+
 // Called when the game starts
 void UHealthComp::BeginPlay()
 {
 	Super::BeginPlay();
 
 	CurrentHealth = MaxHealth;
+	HealthInterface=Cast<IHealthInterface>(GetOwner());
+	if (HealthInterface!=nullptr)
+	{
+		BroadDeath.AddDynamic(this, &UHealthComp::DeathDelegate);
+	}
 	
 }
+
+void UHealthComp::DeathDelegate()
+{
+	if (HealthInterface != nullptr)
+	{
+		//HealthInterface->OnDeath();
+		//HealthInterface->OnDeath_Implementation();
+	}
+}
+
 
 void UHealthComp::ReSetMaxHealth(float value, bool IsCurrentGetMax)
 {

@@ -2,6 +2,15 @@
 
 
 #include "Character/Player/PaperZDPlayer.h"
+#include "ActorComponent/HealthComp.h"
+#include "ActorComponent/HitStopComp.h"
+#include "ActorComponent/InputRecorderComp.h"
+#include "ActorComponent/SkillComponent.h"
+#include "ActorComponent/GethitComp.h"
+#include "AbilitySystemComponent.h"
+#include "Character/Enemy/PaperZDEnemy.h"
+
+
 
 APaperZDPlayer::APaperZDPlayer()
 {
@@ -9,6 +18,7 @@ APaperZDPlayer::APaperZDPlayer()
 	HitStopComp = CreateDefaultSubobject<UHitStopComp>(TEXT("HitStopComp"));
 	InputRecorder = CreateDefaultSubobject<UInputRecorderComp>(TEXT("InputRecorderComp"));
 	GethitComp = CreateDefaultSubobject<UGethitComp>(TEXT("GethitComp"));
+	AbilitySystem = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystem"));
 
 	NowState = ECharacterState::None;
 }
@@ -58,6 +68,25 @@ APaperZDEnemy* APaperZDPlayer::LookForEnemy(float MaxDistance, TArray<AActor*> A
 		}
 	}
 	return CurrentEnemy;
+}
+
+void APaperZDPlayer::ReplaceSkillComponent(TSubclassOf<USkillComponent> NewSkill)
+{
+	if (!NewSkill || !GetWorld())
+		return;
+
+	if (SkillComp)
+	{
+		SkillComp->DestroyComponent();
+		SkillComp = nullptr;
+	}
+
+	USkillComponent* NewSkillComp = NewObject<USkillComponent>(this, NewSkill);
+	if (NewSkillComp)
+	{
+		NewSkillComp->RegisterComponent();
+		SkillComp = NewSkillComp;
+	}
 }
 
 FDamageStruct APaperZDPlayer::GetCharacterBasicData(EAttackType AttackType)

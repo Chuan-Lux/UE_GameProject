@@ -8,7 +8,7 @@
 #include "SkillComponent.generated.h"
 
 
-UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent),Blueprintable)
 class GAMEPROJECT_API USkillComponent : public UActorComponent, public  ISkillInterface
 {
 	GENERATED_BODY()

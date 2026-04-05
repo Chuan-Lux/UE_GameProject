@@ -3,21 +3,22 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "ActorComponent/HealthComp.h"
-#include "ActorComponent/HitStopComp.h"
-#include "ActorComponent/InputRecorderComp.h"
-#include "ActorComponent/SkillComponent.h"
-#include "Character/Enemy/PaperZDEnemy.h"
-#include "Interface/HealthInterface.h"
+#include "AbilitySystemInterface.h"
 #include "MyClass.h"
+#include "Interface/HealthInterface.h"
 #include "PaperZDCharacter.h"
 #include "PaperZDPlayer.generated.h"
 
-/**
- * 
- */
+class UHealthComp;
+class UHitStopComp;
+class UInputRecorderComp;
+class UGethitComp;
+class USkillComponent;
+class UAbilitySystemComponent;
+
+
 UCLASS()
-class GAMEPROJECT_API APaperZDPlayer : public APaperZDCharacter,public IHealthInterface
+class GAMEPROJECT_API APaperZDPlayer : public APaperZDCharacter,public IHealthInterface ,public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -60,6 +61,16 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Target")
 	AActor* Target;
 
+
+	//技能组件
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Slot", meta = (AllowPrivateAccess = "true"))
+	class USkillComponent* SkillComp;
+	//更换技能组件
+	UFUNCTION(BlueprintCallable, Category = "Slot")
+	void ReplaceSkillComponent(TSubclassOf<USkillComponent> NewSkill);
+
+
+	//角色固定组件
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health", meta = (AllowPrivateAccess = "true"))
 	class UHealthComp* HealthComp;
@@ -69,9 +80,6 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "InputRecoder", meta = (AllowPrivateAccess = "true"))
 	class UInputRecorderComp*InputRecorder;
-
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Slot", meta = (AllowPrivateAccess="true"))
-	class USkillComponent* USkillComp;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GetHit", meta = (AllowPrivateAccess = "true"))
 	class UGethitComp* GethitComp;
@@ -99,4 +107,16 @@ public:
 
 	UFUNCTION(BlueprintPure)
 	FDamageStruct GetCharacterBasicData(EAttackType AttackType);
+
+	//GAS
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GAS", meta = (AllowPrivateAccess = "true"))
+	class UAbilitySystemComponent* AbilitySystem;
+
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override
+	{
+		return AbilitySystem;
+	}
 };
+
+
