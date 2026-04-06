@@ -3,6 +3,7 @@
 
 #include "Function/MyBlueprintFunctionLibrary.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Notify/EffectNotify.h"
 #include "PaperFlipbookComponent.h"  
 
 
@@ -89,4 +90,16 @@ float UMyBlueprintFunctionLibrary::DamageCalculation(const float ATK, const floa
 	}
 	float damage = ATK * (1 + Increase) * Critical;
 	return damage;
+}
+
+void UMyBlueprintFunctionLibrary::ExcuteNotify(TSubclassOf<UEffectNotify> NotifyClass)
+{
+	if (NotifyClass) 
+	{
+		// 创建实例
+		UEffectNotify* Notify = NewObject<UEffectNotify>(GetTransientPackage(), NotifyClass);
+		Notify->NotifyBegin();
+		// 清理
+		Notify->MarkAsGarbage();
+	}
 }

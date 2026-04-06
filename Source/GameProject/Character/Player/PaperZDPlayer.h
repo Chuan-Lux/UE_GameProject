@@ -25,6 +25,8 @@ class GAMEPROJECT_API APaperZDPlayer : public APaperZDCharacter,public IHealthIn
 public:
 	APaperZDPlayer();
 
+	//virtual void BeginPlay() override;
+
 	virtual void OnDeath_Implementation() override;
 
 	virtual void OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force,const float& Damage,bool bIsCritical);
@@ -117,6 +119,11 @@ protected:
 	{
 		return AbilitySystem;
 	}
+	// Ù–‘ºØ
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GAS", meta = (AllowPrivateAccess = "true"))
+	const class UBasicAttributeSet* AttributeSet;
+
+
 };
 
 

@@ -12,7 +12,9 @@
 				"Engine",
 				"Paper2D",
 				"PaperZD",
-				"UMG"
+				"UMG",
+				"GameplayAbilities",
+				"CoreUObject"
 			]
 		}
 	],

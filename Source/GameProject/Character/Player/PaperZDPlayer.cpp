@@ -9,6 +9,7 @@
 #include "ActorComponent/GethitComp.h"
 #include "AbilitySystemComponent.h"
 #include "Character/Enemy/PaperZDEnemy.h"
+#include "GAS/BasicAttributeSet.h"
 
 
 
@@ -22,6 +23,14 @@ APaperZDPlayer::APaperZDPlayer()
 
 	NowState = ECharacterState::None;
 }
+
+//void APaperZDPlayer::BeginPlay()
+//{
+//	if (IsValid(AbilitySystem))
+//	{
+//		AttributeSet = AbilitySystem->GetSet<UBasicAttributeSet>();
+//	}
+//}
 
 void APaperZDPlayer::OnDeath_Implementation()
 {
