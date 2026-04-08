@@ -23,4 +23,12 @@ public:
     FGameplayAttributeData Health;
     ATTRIBUTE_ACCESSORS(UBasicAttributeSet, Health);
 
+    UPROPERTY(BlueprintReadOnly, Category = "GAS")
+    FGameplayAttributeData Defence;
+    ATTRIBUTE_ACCESSORS(UBasicAttributeSet, Defence);
+
+    UPROPERTY(BlueprintReadOnly, Category = "GAS")
+    FGameplayAttributeData ATK;
+    ATTRIBUTE_ACCESSORS(UBasicAttributeSet,ATK);
+
 };

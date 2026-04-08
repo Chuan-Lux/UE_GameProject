@@ -31,6 +31,14 @@ APaperZDPlayer::APaperZDPlayer()
 //		AttributeSet = AbilitySystem->GetSet<UBasicAttributeSet>();
 //	}
 //}
+void APaperZDPlayer::Initialize()
+{
+	if (IsValid(AbilitySystem))
+	{
+		AttributeSet = AbilitySystem->GetSet<UBasicAttributeSet>();
+	}
+}
+
 
 void APaperZDPlayer::OnDeath_Implementation()
 {
@@ -39,6 +47,7 @@ void APaperZDPlayer::OnDeath_Implementation()
 void APaperZDPlayer::OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force, const float& Damage,bool bIsCritical)
 {
 }
+
 
 EInputDirection APaperZDPlayer::DirectionToTaeget()
 {

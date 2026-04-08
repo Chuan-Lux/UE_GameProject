@@ -31,6 +31,9 @@ public:
 
 	virtual void OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force,const float& Damage,bool bIsCritical);
 
+	UFUNCTION(BlueprintCallable)
+	void Initialize();
+
 	//////Function
 	//…Ë÷√≈ˆ◊≤∑ΩœÚ£ª
 	UFUNCTION(BlueprintPure)
