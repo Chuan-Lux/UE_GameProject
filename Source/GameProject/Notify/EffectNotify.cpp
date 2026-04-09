@@ -3,6 +3,8 @@
 
 #include "Notify/EffectNotify.h"
 
+
+
 APlayerController* UEffectNotify::GetPlayerController()
 {
     return	GetWorld()->GetFirstPlayerController();
@@ -14,5 +16,9 @@ ACharacter* UEffectNotify::GetPlayer()
 }
 
 void UEffectNotify::NotifyBegin_Implementation()
+{
+}
+
+void UEffectNotify::NotifyEnd_Implementation()
 {
 }

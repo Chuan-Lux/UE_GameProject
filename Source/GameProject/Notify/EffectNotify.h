@@ -20,6 +20,9 @@ public:
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Notify")
 	void  NotifyBegin();
 
+	UFUNCTION(BlueprintNativeEvent, BlueprintCallable, Category = "Notify")
+	void  NotifyEnd();
+
 	UFUNCTION(BlueprintPure)
 	APlayerController* GetPlayerController();
 
@@ -28,5 +31,7 @@ public:
 
 protected:
 	virtual void NotifyBegin_Implementation();
+
+	virtual void NotifyEnd_Implementation();
 
 };

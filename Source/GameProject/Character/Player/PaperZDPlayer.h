@@ -15,6 +15,7 @@ class UInputRecorderComp;
 class UGethitComp;
 class USkillComponent;
 class UAbilitySystemComponent;
+class UGameplayAbility;
 
 
 UCLASS()
@@ -62,6 +63,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, Category = "Move")
 	bool IsAbleJump = true;
+
+	UPROPERTY(BlueprintReadWrite, Category = "Move")
+	bool IsAbleAttack = true;
 
 	UPROPERTY(BlueprintReadWrite, Category = "Target")
 	AActor* Target;
@@ -126,7 +130,19 @@ protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GAS", meta = (AllowPrivateAccess = "true"))
 	const class UBasicAttributeSet* AttributeSet;
 
+	//ÄÜÁ¦¼¯
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GAS", meta = (AllowPrivateAccess = "true"))
+	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
 
+public:
+	UFUNCTION(BlueprintCallable, Category = "Abilities")
+	void GA_Dash(TSubclassOf<UGameplayAbility> GA_Dash);
+
+	UFUNCTION(BlueprintCallable, Category = "Abilities")
+	void GA_Attack_1(TSubclassOf<UGameplayAbility> GA_Attack_1);
+
+	UFUNCTION(BlueprintCallable, Category = "Abilities")
+	void GA_Damage(TSubclassOf<UGameplayAbility> GA_Damage);
 };
 
 

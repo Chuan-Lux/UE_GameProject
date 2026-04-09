@@ -3,22 +3,30 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "AbilitySystemInterface.h"
 #include "Interface/HealthInterface.h"
 #include "PaperZDCharacter.h"
 #include "PaperZDEnemy.generated.h"
 
 
+
 class UHealthComp;
 class UInputRecorderComp;
 class UGethitComp;
+class UAbilitySystemComponent;
+class UGameplayAbility;
+class UBasicAttributeSet;
 
 UCLASS()
-class GAMEPROJECT_API APaperZDEnemy : public APaperZDCharacter,public IHealthInterface
+class GAMEPROJECT_API APaperZDEnemy : public APaperZDCharacter, public IHealthInterface, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
 public:
 	APaperZDEnemy();
+
+	UFUNCTION(BlueprintCallable)
+	void Initialize();
 
 	virtual void OnDeath_Implementation() override;
 
@@ -41,4 +49,23 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "GetHit", meta = (AllowPrivateAccess = "true"))
 	class UGethitComp* GethitComp;
+
+
+	//GAS
+protected:
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GAS", meta = (AllowPrivateAccess = "true"))
+	UAbilitySystemComponent* AbilitySystemComp;
+
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override
+	{
+		return AbilitySystemComp;
+	}
+	//属性集
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GAS", meta = (AllowPrivateAccess = "true"))
+	const UBasicAttributeSet* AttributeSet;
+
+	//能力集
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GAS", meta = (AllowPrivateAccess = "true"))
+	TArray<TSubclassOf<UGameplayAbility>> StartupAbilities;
+
 };

@@ -24,6 +24,9 @@ public:
 	UFUNCTION(BlueprintPure)
 	static FVector Vector_WorldCastToLocal(AActor* Target, FVector WorldVector);
 
+	UFUNCTION(BlueprintPure)
+	static FVector Vector_LocalCastToWorld(AActor* Target, FVector LocalVector);
+
 	//UI³¯ÏòÉãÏñ»ú
 	UFUNCTION(BlueprintCallable)
 	static void WidgetToCamera(USceneComponent* Widget);

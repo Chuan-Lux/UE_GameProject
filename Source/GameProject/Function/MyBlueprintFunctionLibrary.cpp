@@ -57,6 +57,15 @@ FVector UMyBlueprintFunctionLibrary::Vector_WorldCastToLocal(AActor* Target, FVe
 	return LocalVector;
 }
 
+FVector UMyBlueprintFunctionLibrary::Vector_LocalCastToWorld(AActor* Target, FVector LocalVector)
+{
+	if (Target == nullptr)
+	{
+		return FVector(0, 0, 0);
+	}
+	return Target->GetActorRotation().RotateVector(LocalVector);
+}
+
 void UMyBlueprintFunctionLibrary::WidgetToCamera(USceneComponent* Widget)
 {
 	if (Widget == nullptr)

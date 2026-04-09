@@ -5,6 +5,10 @@
 #include "ActorComponent/HealthComp.h"
 #include "ActorComponent/InputRecorderComp.h"
 #include "ActorComponent/GethitComp.h"
+#include "AbilitySystemComponent.h"
+#include "Abilities/GameplayAbility.h"
+#include "GAS/BasicAttributeSet.h"
+
 
 
 
@@ -13,6 +17,22 @@ APaperZDEnemy::APaperZDEnemy()
 	HealthComp = CreateDefaultSubobject<UHealthComp>(TEXT("HealthComp"));
 	InputRecorderComp = CreateDefaultSubobject<UInputRecorderComp>(TEXT("InputRecorderComp"));
 	GethitComp = CreateDefaultSubobject<UGethitComp>(TEXT("GethitComp"));
+	AbilitySystemComp = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComp"));
+}
+
+void APaperZDEnemy::Initialize()
+{
+	//设置属性集
+	if (IsValid(AbilitySystemComp))
+	{
+		AttributeSet = AbilitySystemComp->GetSet<UBasicAttributeSet>();
+	}
+	//给予能力集
+	for (const auto& Ability : StartupAbilities)
+	{
+		FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(Ability);
+		AbilitySystemComp->GiveAbility(AbilitySpec);
+	}
 }
 
 void APaperZDEnemy::OnDeath_Implementation()

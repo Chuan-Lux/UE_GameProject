@@ -8,6 +8,7 @@
 #include "ActorComponent/SkillComponent.h"
 #include "ActorComponent/GethitComp.h"
 #include "AbilitySystemComponent.h"
+#include "Abilities/GameplayAbility.h"
 #include "Character/Enemy/PaperZDEnemy.h"
 #include "GAS/BasicAttributeSet.h"
 
@@ -24,18 +25,18 @@ APaperZDPlayer::APaperZDPlayer()
 	NowState = ECharacterState::None;
 }
 
-//void APaperZDPlayer::BeginPlay()
-//{
-//	if (IsValid(AbilitySystem))
-//	{
-//		AttributeSet = AbilitySystem->GetSet<UBasicAttributeSet>();
-//	}
-//}
 void APaperZDPlayer::Initialize()
 {
+	//设置属性集
 	if (IsValid(AbilitySystem))
 	{
 		AttributeSet = AbilitySystem->GetSet<UBasicAttributeSet>();
+	}
+	//给予能力集
+	for(const auto& Ability:StartupAbilities)
+	{
+		FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(Ability);
+		AbilitySystem->GiveAbility(AbilitySpec);
 	}
 }
 
@@ -72,7 +73,7 @@ APaperZDEnemy* APaperZDPlayer::LookForEnemy(float MaxDistance, TArray<AActor*> A
 {
 	float CurrenDistance=MaxDistance;
 	APaperZDEnemy* CurrentEnemy=nullptr;
-	for (AActor* Enemy : Actors)
+	for (const auto& Enemy : Actors)
 	{
 		APaperZDEnemy* paperEnemy = Cast<APaperZDEnemy>(Enemy);
 		if (paperEnemy!=nullptr)
@@ -128,4 +129,19 @@ FDamageStruct APaperZDPlayer::GetCharacterBasicData(EAttackType AttackType)
 		break;
 	}
 	return Stats;
+}
+
+void APaperZDPlayer::GA_Dash(TSubclassOf<UGameplayAbility> GA_Dash)
+{
+	AbilitySystem->TryActivateAbilityByClass(GA_Dash,true);
+}
+
+void APaperZDPlayer::GA_Attack_1(TSubclassOf<UGameplayAbility> GA_Attack_1)
+{
+	AbilitySystem->TryActivateAbilityByClass(GA_Attack_1, true);
+}
+
+void APaperZDPlayer::GA_Damage(TSubclassOf<UGameplayAbility> GA_Damage)
+{
+	AbilitySystem->TryActivateAbilityByClass(GA_Damage, true);
 }
