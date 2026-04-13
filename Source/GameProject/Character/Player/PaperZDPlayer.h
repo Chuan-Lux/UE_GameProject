@@ -142,7 +142,11 @@ public:
 	void GA_Attack_1(TSubclassOf<UGameplayAbility> GA_Attack_1);
 
 	UFUNCTION(BlueprintCallable, Category = "Abilities")
+	void GA_Attack_2(TSubclassOf<UGameplayAbility> GA_Attack_2);
+
+	UFUNCTION(BlueprintCallable, Category = "Abilities")
 	void GA_Damage(TSubclassOf<UGameplayAbility> GA_Damage);
+
 };
 
 
