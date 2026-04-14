@@ -31,8 +31,7 @@ public:
 	}
 
 	
-private:
-	UPROPERTY(EditAnywhere,BlueprintReadOnly,Category = "Widget")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite,Category = "Widget")
 	UUserWidget* illustration_Widget;
 
 };
