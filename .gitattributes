@@ -3,3 +3,27 @@ Content/** filter=lfs diff=lfs merge=lfs -text
 .umap filter=lfs diff=lfs merge=lfs -text
 *.uasset filter=lfs diff=lfs merge=lfs -text
 *.umap filter=lfs diff=lfs merge=lfs -text
+
+# 原始音频源文件（Wwise 工程中的 .wav 等）
+**/Originals/**/*.wav filter=lfs diff=lfs merge=lfs -text
+**/Originals/**/*.aiff filter=lfs diff=lfs merge=lfs -text
+**/Originals/**/*.aif filter=lfs diff=lfs merge=lfs -text
+**/Originals/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
+**/Originals/**/*.ogg filter=lfs diff=lfs merge=lfs -text
+
+# 生成的声音包（SoundBanks）
+**/GeneratedSoundBanks/**/*.bnk filter=lfs diff=lfs merge=lfs -text
+**/GeneratedSoundBanks/**/*.wem filter=lfs diff=lfs merge=lfs -text
+**/GeneratedSoundBanks/**/*.pck filter=lfs diff=lfs merge=lfs -text
+**/GeneratedSoundBanks/**/*.json filter=lfs diff=lfs merge=lfs -text  # 部分平台会生成 json 元信息
+
+# Wwise 插件二进制文件
+**/Plugins/**/*.dll filter=lfs diff=lfs merge=lfs -text
+**/Plugins/**/*.so filter=lfs diff=lfs merge=lfs -text
+**/Plugins/**/*.dylib filter=lfs diff=lfs merge=lfs -text
+**/Plugins/**/*.a filter=lfs diff=lfs merge=lfs -text
+**/Plugins/**/*.lib filter=lfs diff=lfs merge=lfs -text
+
+# ========== Wwise 工程文件（不用 LFS，强制二进制）==========
+*.wproj -text -diff -merge
+*.wwu -text -diff -merge

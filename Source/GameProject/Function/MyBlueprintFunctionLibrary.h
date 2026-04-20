@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "PaperCharacter.h"
+#include "MyClass.h"
 #include "MyBlueprintFunctionLibrary.generated.h"
 
 /**
@@ -17,7 +18,7 @@ class GAMEPROJECT_API UMyBlueprintFunctionLibrary : public UBlueprintFunctionLib
 public:
 
 
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Character")
 	static void TickRotation(APaperCharacter*Character);
 
 	//世界坐标向量转换为局部向量
@@ -28,7 +29,7 @@ public:
 	static FVector Vector_LocalCastToWorld(AActor* Target, FVector LocalVector);
 
 	//UI朝向摄像机
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Character")
 	static void WidgetToCamera(USceneComponent* Widget);
 
 	////根据方向选择动画
@@ -41,6 +42,13 @@ public:
 	static float DamageCalculation(const float ATK, const float Increase, const float Critical_Rate, const float Critical_Damage,bool& bIsCritical);
 
 	//执行Notify
-	UFUNCTION(BlueprintCallable)
+	UFUNCTION(BlueprintCallable, Category = "Notify")
 	static void ExcuteNotify(TSubclassOf<UEffectNotify> NotifyClass);
+
+	//增加 IndexNum;
+	UFUNCTION(BlueprintCallable, Category = "Data")
+	static TArray<FIndexNum> InsertData(TArray<FIndexNum> List, int Index, int num);
+	//减少
+	UFUNCTION(BlueprintCallable, Category = "Data")
+	static TArray<FIndexNum> RemoveData(TArray<FIndexNum>List,int Index, int num);
 };

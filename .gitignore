@@ -12,3 +12,9 @@ Saved
 *.suo
 *.xcodeproj
 *.xcworkspace
+
+# Wwise 本地缓存
+**/.cache/
+**/.validationcache
+**/*.wsettings
+**/WwiseProjectInfo.json

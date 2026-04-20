@@ -31,4 +31,12 @@ public:
     FGameplayAttributeData ATK;
     ATTRIBUTE_ACCESSORS(UBasicAttributeSet,ATK);
 
+    UPROPERTY(BlueprintReadOnly, Category = "GAS")
+    FGameplayAttributeData MeleeIncrease;
+    ATTRIBUTE_ACCESSORS(UBasicAttributeSet, MeleeIncrease);
+
+    UPROPERTY(BlueprintReadOnly, Category = "GAS")
+    FGameplayAttributeData RangedIncrease;
+    ATTRIBUTE_ACCESSORS(UBasicAttributeSet,RangedIncrease);
+
 };

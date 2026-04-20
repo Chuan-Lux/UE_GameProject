@@ -112,3 +112,51 @@ void UMyBlueprintFunctionLibrary::ExcuteNotify(TSubclassOf<UEffectNotify> Notify
 		Notify->MarkAsGarbage();
 	}
 }
+
+TArray<FIndexNum> UMyBlueprintFunctionLibrary::InsertData(TArray<FIndexNum> List, int Index, int num)
+{
+	bool bFound = false;
+	int length = List.Num();
+
+	for (int i = 0; i < length; i++)
+	{
+		if (List[i].Index == Index)
+		{
+			List[i].Num += num;
+			bFound = true;
+			break;
+		}
+	}
+	if (!bFound)
+	{
+		FIndexNum NewItem;
+		NewItem.Index = Index;
+		NewItem.Num = num;
+		List.Add(NewItem);
+	}
+
+	return List;
+}
+
+TArray<FIndexNum> UMyBlueprintFunctionLibrary::RemoveData(TArray<FIndexNum> List, int Index, int num)
+{
+	int length = List.Num();
+
+	for (int i = 0; i < length; i++)
+	{
+		if (List[i].Index == Index)
+		{
+			List[i].Num -= num;
+			if (List[i].Num <= 0)
+			{
+				List.RemoveAt(i);
+			}
+			break;
+		}
+	}
+	return List;
+}
+
+
+
+

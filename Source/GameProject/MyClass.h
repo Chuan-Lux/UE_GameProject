@@ -84,6 +84,20 @@ struct FDamageStruct
 	float CD = 0.0f;
 };
 
+//序列号对应数量（index+num）
+USTRUCT(BlueprintType)
+struct FIndexNum
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int Index=0;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	int Num=0;
+};
+
+
 ////角色八向图
 //USTRUCT(BlueprintType)
 //struct FEightDirAnimSeq

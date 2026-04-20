@@ -50,7 +50,7 @@ public:
 	void AddCalendar(int Add_Day,int Add_Progress);
 
 private:
-	int Last_Day;
+	int Last_Day=1;
 	int Last_Progress;
 
 

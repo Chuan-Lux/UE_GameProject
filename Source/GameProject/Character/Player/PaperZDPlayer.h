@@ -32,6 +32,7 @@ public:
 
 	virtual void OnDmg_Implementation(const FHitResult& HitResult, const FVector& AttackVec, const float& Force,const float& Damage,bool bIsCritical);
 
+
 	UFUNCTION(BlueprintCallable)
 	void Initialize();
 
@@ -143,6 +144,9 @@ public:
 
 	UFUNCTION(BlueprintCallable, Category = "Abilities")
 	void GA_Attack_2(TSubclassOf<UGameplayAbility> GA_Attack_2);
+
+	UFUNCTION(BlueprintCallable, Category = "Abilities")
+	void GA_QTE(TSubclassOf<UGameplayAbility> GA_QTE);
 
 	UFUNCTION(BlueprintCallable, Category = "Abilities")
 	void GA_Damage(TSubclassOf<UGameplayAbility> GA_Damage);

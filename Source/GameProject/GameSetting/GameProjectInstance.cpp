@@ -15,6 +15,7 @@ void UGameProjectInstance::TriggerEvent_UpdateGrowthData()
 
 void UGameProjectInstance::CheckOutTime()
 {
+	//检查改变的节点是否为日期
 	if (DayTime!=Last_Day)
 	{
 		ProgressPoint = 0;

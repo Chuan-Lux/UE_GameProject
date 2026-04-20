@@ -146,6 +146,11 @@ void APaperZDPlayer::GA_Attack_2(TSubclassOf<UGameplayAbility> GA_Attack_2)
 	AbilitySystem->TryActivateAbilityByClass(GA_Attack_2, true);
 }
 
+void APaperZDPlayer::GA_QTE(TSubclassOf<UGameplayAbility> GA_QTE)
+{
+	AbilitySystem->TryActivateAbilityByClass(GA_QTE, true);
+}
+
 void APaperZDPlayer::GA_Damage(TSubclassOf<UGameplayAbility> GA_Damage)
 {
 	AbilitySystem->TryActivateAbilityByClass(GA_Damage, true);
