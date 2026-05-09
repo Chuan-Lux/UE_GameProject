@@ -34,57 +34,33 @@ void UInputRecorderComp::TickComponent(float DeltaTime, ELevelTick TickType, FAc
 
 	// ...
 }
-void UInputRecorderComp::UpdateDirectionHistory(FVector2D InputMovement)
+void UInputRecorderComp::UpdateDirectionHistory(FVector2D InputMovement, bool IsEight)
 {
-	
+	if (IsEight)
+		UpdateDirectionHistory8(InputMovement);
+	else
+		UpdateDirectionHistory4(InputMovement);
+}
+
+void UInputRecorderComp::UpdateDirectionHistory8(FVector2D InputMovement)
+{
 	if (InputMovement.X != 0.f || InputMovement.Y != 0.f)
 	{
-		// 先归一化输入向量，确保方向判断准确
-		FVector2D NormalizedInput = InputMovement.GetSafeNormal();
+		InsertDirectionHistory(VectorToDir(InputMovement));
+	}
 
-		// 计算角度（弧度转角度）
-		float Angle = FMath::RadiansToDegrees(FMath::Atan2(NormalizedInput.Y, NormalizedInput.X));
+	// 保持只记录4个数据
+	if (DirectionHistory.Num() > 4)
+	{
+		DirectionHistory.SetNum(4);
+	}
+}
 
-		// 将角度映射到 0-360 度范围
-		if (Angle < 0)
-		{
-			Angle += 360.0f;
-		}
-
-		// 根据角度判断8方向
-		// 将360度分为8个区间，每个区间45度
-		if (Angle >= 337.5f || Angle < 22.5f)
-		{
-			InsertDirectionHistory(EInputDirection::Right);      // 0度
-		}
-		else if (Angle >= 22.5f && Angle < 67.5f)
-		{
-			InsertDirectionHistory(EInputDirection::Up_Right);   // 45度
-		}
-		else if (Angle >= 67.5f && Angle < 112.5f)
-		{
-			InsertDirectionHistory(EInputDirection::Up);         // 90度
-		}
-		else if (Angle >= 112.5f && Angle < 157.5f)
-		{
-			InsertDirectionHistory(EInputDirection::Up_Left);    // 135度
-		}
-		else if (Angle >= 157.5f && Angle < 202.5f)
-		{
-			InsertDirectionHistory(EInputDirection::Left);       // 180度
-		}
-		else if (Angle >= 202.5f && Angle < 247.5f)
-		{
-			InsertDirectionHistory(EInputDirection::Down_Left);  // 225度
-		}
-		else if (Angle >= 247.5f && Angle < 292.5f)
-		{
-			InsertDirectionHistory(EInputDirection::Down);       // 270度
-		}
-		else if (Angle >= 292.5f && Angle < 337.5f)
-		{
-			InsertDirectionHistory(EInputDirection::Down_Right); // 315度
-		}
+void UInputRecorderComp::UpdateDirectionHistory4(FVector2D InputMovement)
+{
+	if (InputMovement.X != 0.f || InputMovement.Y != 0.f)
+	{
+		InsertDirectionHistory(VectorToDir4(InputMovement));
 	}
 
 	// 保持只记录4个数据
@@ -187,6 +163,43 @@ EInputDirection UInputRecorderComp::VectorToDir(FVector2D vector)
 		{
 			return EInputDirection::Down_Right; // 315度
 		}
+		return EInputDirection::Center;
+	}
+	else
+	{
+		return EInputDirection::Center;
+	}
+}
+
+EInputDirection UInputRecorderComp::VectorToDir4(FVector2D vector)
+{
+	FVector2D InputMovement = vector;
+	if (InputMovement.X != 0.f || InputMovement.Y != 0.f)
+	{
+		FVector2D NormalizedInput = InputMovement.GetSafeNormal();
+		float Angle = FMath::RadiansToDegrees(FMath::Atan2(NormalizedInput.Y, NormalizedInput.X));
+		if (Angle < 0)
+		{
+			Angle += 360.0f;
+		}
+
+		if ((Angle >= 315.0f && Angle < 360.0f) || (Angle >= 0.0f && Angle < 45.0f))
+		{
+			return EInputDirection::Right;
+		}
+		else if (Angle >= 45.0f && Angle < 135.0f)
+		{
+			return EInputDirection::Up;
+		}
+		else if (Angle >= 135.0f && Angle < 225.0f)
+		{
+			return EInputDirection::Left;
+		}
+		else if (Angle >= 225.0f && Angle < 315.0f)
+		{
+			return EInputDirection::Down;
+		}
+
 		return EInputDirection::Center;
 	}
 	else

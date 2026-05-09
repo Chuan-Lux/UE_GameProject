@@ -42,7 +42,13 @@ public:
 	TArray<FInputDirectionHistory> DirectionHistory;
 
 	UFUNCTION(BlueprintCallable)
-	void UpdateDirectionHistory(FVector2D InputMovement);
+	void UpdateDirectionHistory(FVector2D InputMovement,bool IsEight);
+
+	UFUNCTION(BlueprintCallable)
+	void UpdateDirectionHistory8(FVector2D InputMovement);
+
+	UFUNCTION(BlueprintCallable)
+	void UpdateDirectionHistory4(FVector2D InputMovement);
 
 	//获得目标相对方向
 	UFUNCTION(BlueprintPure)
@@ -60,6 +66,10 @@ public:
 	//转换
 	UFUNCTION(BlueprintPure)
 	EInputDirection VectorToDir(FVector2D vector);
+
+	UFUNCTION(BlueprintPure)
+	EInputDirection VectorToDir4(FVector2D vector);
+
 
 	//转换
 	UFUNCTION(BlueprintPure)

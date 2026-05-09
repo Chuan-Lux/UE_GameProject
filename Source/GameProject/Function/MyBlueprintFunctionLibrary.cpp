@@ -88,6 +88,32 @@ void UMyBlueprintFunctionLibrary::WidgetToCamera(USceneComponent* Widget)
 	Widget->SetWorldRotation(NewRotation);
 }
 
+void UMyBlueprintFunctionLibrary::ActorToCamera(AActor* Source)
+{
+	if (!Source)
+		return;
+
+	//获得玩家相机场景组件
+	APlayerCameraManager* CameraManager = Source->GetWorld()->GetFirstPlayerController()->PlayerCameraManager;
+	USceneComponent* CameraSceneComponent = CameraManager->GetTransformComponent();
+	if (CameraSceneComponent == nullptr)
+	{
+		return;
+	}
+
+	FVector SourceLocation = Source->GetActorLocation();
+	FVector PlayerCamera = CameraSceneComponent->GetComponentLocation();
+
+	FVector Direction = PlayerCamera -SourceLocation;
+	FRotator NewRotation = Direction.Rotation();
+
+	NewRotation.Yaw -= 90.0f;
+	NewRotation.Pitch = 0;
+	NewRotation.Roll = 0;
+
+	Source->SetActorRotation(NewRotation);
+}
+
 float UMyBlueprintFunctionLibrary::DamageCalculation(const float ATK, const float Increase, const float Critical_Rate, const float Critical_Damage, bool& bIsCritical)
 {
 	float RandomValue = FMath::FRand();
@@ -101,15 +127,21 @@ float UMyBlueprintFunctionLibrary::DamageCalculation(const float ATK, const floa
 	return damage;
 }
 
-void UMyBlueprintFunctionLibrary::ExcuteNotify(TSubclassOf<UEffectNotify> NotifyClass)
+void UMyBlueprintFunctionLibrary::ExcuteNotify(const UObject* WorldContextObject, TSubclassOf<UEffectNotify> NotifyClass)
 {
-	if (NotifyClass) 
+	if (NotifyClass && WorldContextObject)
 	{
-		// 创建实例
-		UEffectNotify* Notify = NewObject<UEffectNotify>(GetTransientPackage(), NotifyClass);
-		Notify->NotifyBegin();
-		// 清理
-		Notify->MarkAsGarbage();
+		UWorld* World = WorldContextObject->GetWorld();
+		if (World)
+		{
+			// 使用 World 作为 Outer，对象随 World 生命周期管理
+			UEffectNotify* Notify = NewObject<UEffectNotify>(World, NotifyClass);
+			if (Notify)
+			{
+				Notify->NotifyBegin();
+				Notify->MarkAsGarbage();
+			}
+		}
 	}
 }
 

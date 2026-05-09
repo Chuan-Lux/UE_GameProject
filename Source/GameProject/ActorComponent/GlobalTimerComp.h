@@ -41,6 +41,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void LaunchTimer();
 
+	UFUNCTION(BlueprintCallable)
+	void StopTimer();
+
 	//ÊÂ¼þ½áÊø
 	UFUNCTION(BlueprintNativeEvent)
 	void TimerEndEvent();

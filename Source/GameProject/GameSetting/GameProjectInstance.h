@@ -7,6 +7,17 @@
 #include "MyClass.h"
 #include "GameProjectInstance.generated.h"
 
+USTRUCT(BlueprintType)
+struct FFans
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Redfan;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Blackfan;
+};
 /**
  * 
  */
@@ -19,12 +30,25 @@ class GAMEPROJECT_API UGameProjectInstance : public UGameInstance
 	GENERATED_BODY()
 	
 public:
-	UPROPERTY(BlueprintReadWrite, Category = "Calendar")
+	//粉丝管理数据
+	UPROPERTY(EditAnywhere, Category = "GrowthData")
+	FFans Fan;
+
+	UFUNCTION(BlueprintCallable, Category = "GrowthData")
+	void AddFans(const float Red,const float Black);
+
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Calendar")
 	int DayTime=1;
 
-	UPROPERTY(BlueprintReadWrite, Category = "Calendar")
-	int ProgressPoint;
+	UPROPERTY(EditAnywhere,BlueprintReadWrite, Category = "Calendar")
+	int ProgressPoint=2;
 
+	//确保事件不会重复触发
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Calendar")
+	bool IsChangeScenceBroadPlayer_Day=true;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Calendar")
+	bool IsChangeScenceBroadPlayer_Progress = true;
 
 	//节点时间分发器
 	UPROPERTY(BlueprintAssignable, Category = "Event")
@@ -36,10 +60,9 @@ public:
 
 
 	UFUNCTION(BlueprintCallable, Category = "Event")
-	void TriggerEvent_UpdateDayProgress(int Day,int Progress);
-
-	UFUNCTION(BlueprintCallable, Category = "Event")
 	void TriggerEvent_UpdateGrowthData();
+
+	
 
 	//检测
 	UFUNCTION(BlueprintCallable, Category = "Event")
@@ -50,8 +73,11 @@ public:
 	void AddCalendar(int Add_Day,int Add_Progress);
 
 private:
-	int Last_Day=1;
-	int Last_Progress;
+	int Last_Day=0;
+	int Last_Progress=-1;
+
+	//天数更新事件触发器
+	void TriggerEvent_UpdateDayProgress(int Day, int Progress);
 
 
 	//养成系统

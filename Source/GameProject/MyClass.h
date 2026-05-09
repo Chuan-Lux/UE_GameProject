@@ -64,6 +64,26 @@ enum class EAttackType:uint8
 	Ranged UMETA(DisplayName = "Ranged")
 };
 
+UENUM(BluePrintType)
+enum class EMissionType :uint8
+{
+	None UMETA(DisplayName = "None"),
+	TimerOut UMETA(DisplayName = "TimerOut"),
+	Elimination UMETA(DisplayName = "Elimination")
+};
+
+USTRUCT(BlueprintType)
+struct FMissionStruct
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite,EditAnywhere)
+	EMissionType MissonType;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Progress;
+};
+
 //角色攻击数据
 USTRUCT(BlueprintType)
 struct FDamageStruct
@@ -97,6 +117,16 @@ struct FIndexNum
 	int Num=0;
 };
 
+USTRUCT(BlueprintType)
+struct FMaxandMin
+{
+	GENERATED_BODY()
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Max = 0;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	float Min = 0;
+};
 
 ////角色八向图
 //USTRUCT(BlueprintType)

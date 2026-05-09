@@ -5,6 +5,7 @@
 
 
 
+
 APlayerController* UEffectNotify::GetPlayerController()
 {
     return	GetWorld()->GetFirstPlayerController();

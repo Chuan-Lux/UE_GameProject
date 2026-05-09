@@ -8,6 +8,18 @@ void UGameProjectInstance::TriggerEvent_UpdateDayProgress(int Day, int Progress)
 	OnUpdateDayProgress.Broadcast(Day,Progress);
 }
 
+void UGameProjectInstance::AddFans(const float Red, const float Black)
+{
+	Fan.Redfan += Red;
+	if (Fan.Redfan <= 0)
+		Fan.Redfan = 0;
+
+
+	Fan.Blackfan += Black;
+	if (Fan.Blackfan <= 0)
+		Fan.Blackfan = 0;
+}
+
 void UGameProjectInstance::TriggerEvent_UpdateGrowthData()
 {
 	UpdateGrowthData.Broadcast();
@@ -16,11 +28,15 @@ void UGameProjectInstance::TriggerEvent_UpdateGrowthData()
 void UGameProjectInstance::CheckOutTime()
 {
 	//检查改变的节点是否为日期
-	if (DayTime!=Last_Day)
+	if (DayTime!=Last_Day) //天数更新
 	{
-		ProgressPoint = 0;
+		//ProgressPoint = 0;
 		Last_Day = DayTime;
+		Last_Progress = ProgressPoint;
+
 		TriggerEvent_UpdateDayProgress(DayTime, ProgressPoint);
+		IsChangeScenceBroadPlayer_Day = false;
+		IsChangeScenceBroadPlayer_Progress = false;
 	}
 	else
 	{
@@ -28,6 +44,7 @@ void UGameProjectInstance::CheckOutTime()
 		{
 			Last_Progress = ProgressPoint;
 			TriggerEvent_UpdateDayProgress(DayTime, ProgressPoint);
+			IsChangeScenceBroadPlayer_Progress = false;
 		}
 	}
 }
@@ -37,6 +54,14 @@ void UGameProjectInstance::AddCalendar(int Add_Day, int Add_Progress)
 {
 	DayTime += Add_Day;
 	ProgressPoint += Add_Progress;
+	if (ProgressPoint >= 3) 
+	{
+		ProgressPoint = 0;
+		DayTime += 1;
+		IsChangeScenceBroadPlayer_Day = true;
+	}
+	//节点改变
+	IsChangeScenceBroadPlayer_Progress= true;
 	CheckOutTime();
 }
 

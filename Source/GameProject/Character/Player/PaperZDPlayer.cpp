@@ -25,6 +25,18 @@ APaperZDPlayer::APaperZDPlayer()
 	NowState = ECharacterState::None;
 }
 
+void APaperZDPlayer::BeginPlay()
+{
+	Super::BeginPlay();
+
+	Initialize();
+}
+
+void APaperZDPlayer::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+}
+
 void APaperZDPlayer::Initialize()
 {
 	//ÉèÖÃÊôÐÔ¼¯
@@ -54,7 +66,7 @@ EInputDirection APaperZDPlayer::DirectionToTaeget()
 {
 	if(Target!=nullptr)
 	{
-		InputRecorder->UpdateDirectionHistory(InputRecorder->GetTargetDirection(Target));
+		InputRecorder->UpdateDirectionHistory(InputRecorder->GetTargetDirection(Target),true);
 		return InputRecorder->VectorToDir(InputRecorder->GetTargetDirection(Target));
 	}
 	else

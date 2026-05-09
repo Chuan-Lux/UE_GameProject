@@ -26,7 +26,16 @@ class GAMEPROJECT_API APaperZDPlayer : public APaperZDCharacter,public IHealthIn
 public:
 	APaperZDPlayer();
 
-	//virtual void BeginPlay() override;
+protected:
+	virtual void BeginPlay() override;
+
+public:
+	virtual void Tick(float DeltaTime) override;
+
+
+
+
+
 
 	virtual void OnDeath_Implementation() override;
 
@@ -70,6 +79,9 @@ public:
 
 	UPROPERTY(BlueprintReadWrite, Category = "Target")
 	AActor* Target;
+
+	//摄像机效果设置
+
 
 
 	//技能组件

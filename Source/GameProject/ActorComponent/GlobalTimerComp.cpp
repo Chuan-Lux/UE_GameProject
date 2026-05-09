@@ -72,6 +72,16 @@ void UGlobalTimerComp::LaunchTimer()
 
 }
 
+void UGlobalTimerComp::StopTimer()
+{
+	if (!GetWorld())
+		return;
+
+	//清除旧的计时器
+	GetWorld()->GetTimerManager().ClearTimer(TimerHandle);
+	IsContinue = false;
+}
+
 void UGlobalTimerComp::TimerEndEvent_Implementation()
 {
 	//IsContinue = false;

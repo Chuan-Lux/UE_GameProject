@@ -32,6 +32,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Character")
 	static void WidgetToCamera(USceneComponent* Widget);
 
+	//角色朝向摄像机
+	UFUNCTION(BlueprintCallable, Category = "Character")
+	static void ActorToCamera(AActor* Source);
 	////根据方向选择动画
 	//UFUNCTION(BlueprintPure)
 	//static UPaperZDAnimSequence* PaperAnim();
@@ -43,7 +46,7 @@ public:
 
 	//执行Notify
 	UFUNCTION(BlueprintCallable, Category = "Notify")
-	static void ExcuteNotify(TSubclassOf<UEffectNotify> NotifyClass);
+	static void ExcuteNotify(const UObject* WorldContextObject, TSubclassOf<UEffectNotify> NotifyClass);
 
 	//增加 IndexNum;
 	UFUNCTION(BlueprintCallable, Category = "Data")

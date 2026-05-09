@@ -2,6 +2,7 @@
 
 
 #include "ActorComponent/HitStopComp.h"
+#include "Camera/CameraComponent.h"
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -27,6 +28,8 @@ void UHitStopComp::BeginPlay()
 	// ...
 	
 }
+
+
 
 
 // Called every frame
@@ -100,4 +103,59 @@ void UHitStopComp::HitStopLocalTime(float Dilation, float duration)
 		TimerParams
 	);
 }
+
+void UHitStopComp::CameraFOVDecrease(UCameraComponent* Camera, float target, float Speed)
+{
+	if (!GetWorld())
+		return;
+
+	if (Camera->FieldOfView<=target)
+	{
+		GetWorld()->GetTimerManager().ClearTimer(CameraFOVHandle);
+		return;
+	}
+	else
+	{
+		CameraComp=Camera;
+		CameraTarget = target;
+		CameraSpeed = Speed;
+		CameraDecrease();
+	}
+}
+
+void UHitStopComp::CameraDecrease()
+{
+	
+	GetWorld()->GetTimerManager().ClearTimer(CameraFOVHandle);
+
+	float current = CameraComp->FieldOfView;
+	CameraComp->SetFieldOfView(current-CameraSpeed);
+
+
+	FTimerManagerTimerParameters TimerParams;
+	TimerParams.FirstDelay = -1.0;
+	TimerParams.bLoop = false;
+
+	GetWorld()->GetTimerManager().SetTimer(
+		CameraFOVHandle,
+		this,
+		&UHitStopComp::CameraDecreaseLoop,
+		0.0001f,
+		TimerParams);
+}
+
+void UHitStopComp::CameraDecreaseLoop()
+{
+	if (CameraComp->FieldOfView <= CameraTarget)
+	{
+		GetWorld()->GetTimerManager().ClearTimer(CameraFOVHandle);
+		return;
+	}
+	else
+	{
+		CameraDecrease();
+	}
+}
+
+
 

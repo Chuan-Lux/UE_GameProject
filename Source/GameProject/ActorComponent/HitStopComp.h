@@ -6,6 +6,7 @@
 #include "Components/ActorComponent.h"
 #include "HitStopComp.generated.h"
 
+class UCameraComponent;
 
 UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
 class GAMEPROJECT_API UHitStopComp : public UActorComponent
@@ -24,6 +25,11 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void HitStopLocalTime(float Dilation, float duration);
 
+	//全局时停+摄像机放大
+	UFUNCTION(BlueprintCallable)
+	void CameraFOVDecrease(UCameraComponent*Camera,float target,float Speed);
+
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
@@ -32,6 +38,12 @@ private:
 	FTimerHandle HitStopWorldTimeHandle;
 	FTimerHandle HitStopLocalTimeHandle;
 
+	FTimerHandle CameraFOVHandle;
 
+	void CameraDecrease();
+	void CameraDecreaseLoop();
+	UCameraComponent* CameraComp;
+	float CameraTarget;
+	float CameraSpeed;
 		
 };

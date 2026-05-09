@@ -38,7 +38,8 @@ public:
 	UPROPERTY(BlueprintReadWrite, Category = "Move")
 	bool IsAbleMevement=true;
 
-
+	UPROPERTY(BlueprintReadWrite, Category = "Move")
+	bool IsAbleAttack = true;
 
 private:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Health", meta = (AllowPrivateAccess = "true"))

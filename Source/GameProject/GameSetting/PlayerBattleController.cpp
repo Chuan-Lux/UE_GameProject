@@ -3,6 +3,7 @@
 
 #include "GameSetting/PlayerBattleController.h"
 #include "ActorComponent/GlobalTimerComp.h"
+#include "Actor/TaskMonitor.h"
 
 
 APlayerBattleController::APlayerBattleController()
@@ -14,6 +15,15 @@ void APlayerBattleController::LaunchTimer(float time)
 {
 	GlobalTimerComp->Timer = time;
 	GlobalTimerComp->LaunchTimer();
+	if (TaskMonitor)
+	{
+		TaskMonitor->IsLaunch = true;
+	}
+}
+
+void APlayerBattleController::StopTimer()
+{
+	GlobalTimerComp->StopTimer();
 }
 
 float APlayerBattleController::GetRemainingTime()
