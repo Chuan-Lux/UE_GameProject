@@ -13,8 +13,21 @@ Saved
 *.xcodeproj
 *.xcworkspace
 
-# Wwise 本地缓存
+
 **/.cache/
 **/.validationcache
 **/*.wsettings
 **/WwiseProjectInfo.json
+
+
+
+*.bnk
+*.wem
+*.pck
+*.json.bnk
+
+*.tmp
+*.lok
+*.log
+WwiseProject*.backup*
+*.wp.backup
