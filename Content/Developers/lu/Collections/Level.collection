@@ -1,3 +1,10 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:376e1e63d9f47c05b5a04f07bd62096ec2e58f897cbad1608a2875231afc7105
-size 340
+FileVersion:2
+Type:Static
+Guid:9C3D26D2-4BF7-07DE-FD5D-49A2444A81F3
+ParentGuid:00000000-0000-0000-0000-000000000000
+
+/Game/_Project/Level/EndMap.EndMap
+/Game/_Project/Level/LevelBattle/LevelTTK_1.LevelTTK_1
+/Game/_Project/Level/LevelHomepage.LevelHomepage
+/Game/_Project/Level/TTK_Scence.TTK_Scence
+/Game/LP_Cyberpunk_City/Levels/LP_Cyberpunk_City.LP_Cyberpunk_City
