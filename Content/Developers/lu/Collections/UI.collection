@@ -1,3 +1,19 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:6c278dffe4dd5f3fd928ac106ebb10ca947087788e194d79675e33d7d75fbd61
-size 808
+FileVersion:2
+Type:Static
+Guid:2A7F9ABE-4C97-D827-08CC-FD976F789DDC
+ParentGuid:00000000-0000-0000-0000-000000000000
+
+/Game/_Project/Dialog/DialogContext/DT_Day03_Momo.DT_Day03_Momo
+/Game/_Project/UI/Dialog_UI/WB_TalkFrame.WB_TalkFrame
+/Game/_Project/UI/Home_UI/Map/WB_Map.WB_Map
+/Game/_Project/UI/Home_UI/Post/WB_Post.WB_Post
+/Game/_Project/UI/Home_UI/QQ/WB_QQ.WB_QQ
+/Game/_Project/UI/Home_UI/Shop/WB_Shop.WB_Shop
+/Game/_Project/UI/Home_UI/TTK/WB_TTK.WB_TTK
+/Game/_Project/UI/Home_UI/TTK/WB_TTK_CharacterFrame.WB_TTK_CharacterFrame
+/Game/_Project/UI/Home_UI/WB_Calendar.WB_Calendar
+/Game/_Project/UI/Home_UI/WB_HomepagePC.WB_HomepagePC
+/Game/_Project/UI/Home_UI/WB_MainMenu.WB_MainMenu
+/Game/_Project/UI/Home_UI/WB_Phone.WB_Phone
+/Game/_Project/UI/TTK_UI/WB_TTK_end.WB_TTK_end
+/Game/_Project/UI/WB_End.WB_End
