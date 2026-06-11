@@ -39,4 +39,12 @@ public:
     FGameplayAttributeData RangedIncrease;
     ATTRIBUTE_ACCESSORS(UBasicAttributeSet,RangedIncrease);
 
+    UPROPERTY(BlueprintReadOnly, Category = "GAS")
+    FGameplayAttributeData Critical;
+    ATTRIBUTE_ACCESSORS(UBasicAttributeSet, Critical);
+
+    UPROPERTY(BlueprintReadOnly, Category = "GAS")
+    FGameplayAttributeData CriticalDamage;
+    ATTRIBUTE_ACCESSORS(UBasicAttributeSet, CriticalDamage);
+
 };

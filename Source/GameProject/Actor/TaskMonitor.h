@@ -42,8 +42,13 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Mission")
 	void MissionComplete(bool IsComplete);
 
+	//添加任务节点
 	UFUNCTION(BlueprintCallable, Category = "Mission")
 	void TrackMissionProgressAdd(EMissionType MissionType, float Progress);
+
+	//返回任务进度百分比
+	UFUNCTION(BlueprintPure, Category = "Mission")
+	float ReturnProgressElimination();
 
 	UFUNCTION(BlueprintImplementableEvent)
 	void EventEnd();

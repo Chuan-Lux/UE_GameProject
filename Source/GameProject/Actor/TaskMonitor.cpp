@@ -78,6 +78,31 @@ void ATaskMonitor::TrackMissionProgressAdd(EMissionType MissionType, float Progr
 	}
 }
 
+float ATaskMonitor::ReturnProgressElimination()
+{
+	float NeedMissionCount;
+	float CurrentCount;
+
+	for (const auto& mission : Mission)
+	{
+		if (mission.MissonType == EMissionType::Elimination)
+		{
+			NeedMissionCount = mission.Progress;
+		}
+	}
+	if (NeedMissionCount<=0)
+	{
+		return 0;
+	}
+
+	if (PlayerController!=nullptr)
+	{
+		CurrentCount = PlayerController->GetKillEnemy();
+	}
+
+	return CurrentCount/NeedMissionCount;
+}
+
 void ATaskMonitor::TCProgressDecreaseByController(float Timer)
 {
 	if (Timer <= -1)

@@ -36,7 +36,7 @@ void AToolActor::Tick(float DeltaTime)
 	LimitTime -= DeltaTime;
 	if (LimitTime<=0)
 	{
-		OnTrigger();
+		Destroy();
 	}
 
 	UMyBlueprintFunctionLibrary::ActorToCamera(this);

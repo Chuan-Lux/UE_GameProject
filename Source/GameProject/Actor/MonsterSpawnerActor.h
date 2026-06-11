@@ -19,7 +19,7 @@ struct FMonsterSpawner
 	TSubclassOf<APaperZDEnemy> Enemy;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	UCurveFloat* SpawnCurve;
+	UCurveFloat* SpawnCurve=nullptr;
 
 	float CurrentTime=0;
 	float CurrentEnemy;

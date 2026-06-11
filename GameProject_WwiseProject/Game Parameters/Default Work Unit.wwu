@@ -1,6 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{5827D983-6476-4EA2-8DB5-952034664CF1}" SchemaVersion="123">
-	<GameParameters>
-		<WorkUnit Name="Default Work Unit" ID="{5827D983-6476-4EA2-8DB5-952034664CF1}" PersistMode="Standalone"/>
-	</GameParameters>
-</WwiseDocument>
+version https://git-lfs.github.com/spec/v1
+oid sha256:3d53b8ba5c548853f910471498f4342bde517efbfcdc89125ddbfdf055195d9e
+size 297

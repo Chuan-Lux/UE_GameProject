@@ -66,7 +66,6 @@ private:
 	
 	IHealthInterface* HealthInterface;
 
-	void DeathDelegate();
 
 protected:
 	// Called when the game starts

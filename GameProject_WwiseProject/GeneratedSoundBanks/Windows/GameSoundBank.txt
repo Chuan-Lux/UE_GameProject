@@ -1,0 +1,65 @@
+Event	ID	Name			Wwise Object Path	Notes
+	6522003	Play_sfx_ui_score			\Default Work Unit\ui\Play_sfx_ui_score	
+	103086915	Play_music_negative			\Default Work Unit\music\Play_music_negative	
+	440858242	Play_sfx_ttk_character_collect			\Default Work Unit\ttk\Play_sfx_ttk_character_collect	
+	1094792206	Play_sfx_ui_pause_click			\Default Work Unit\ui\Play_sfx_ui_pause_click	
+	1157232366	Play_sfx_ui_notification			\Default Work Unit\ui\Play_sfx_ui_notification	
+	1357874929	Play_sfx_ui_room_select			\Default Work Unit\ui\Play_sfx_ui_room_select	
+	1614763749	Play_music_main			\Default Work Unit\music\Play_music_main	
+	1811638532	Play_sfx_ttk_atk_hit			\Default Work Unit\ttk\Play_sfx_ttk_atk_hit	
+	2033745483	Play_sfx_ttk_shoot_hit			\Default Work Unit\ttk\Play_sfx_ttk_shoot_hit	
+	2065542275	Play_sfx_ttk_character_hit			\Default Work Unit\ttk\Play_sfx_ttk_character_hit	
+	2086362144	Play_sfx_ui_store_purchase			\Default Work Unit\ui\Play_sfx_ui_store_purchase	
+	2097649031	Play_sfx_ui_room_click			\Default Work Unit\ui\Play_sfx_ui_room_click	
+	2126375998	Play_sfx_ui_sub_click			\Default Work Unit\ui\Play_sfx_ui_sub_click	
+	2153787631	Play_sfx_ui_load			\Default Work Unit\ui\Play_sfx_ui_load	
+	2316698415	Play_music_positive			\Default Work Unit\music\Play_music_positive	
+	2448848801	Play_sfx_ttk_character_shoot			\Default Work Unit\ttk\Play_sfx_ttk_character_shoot	
+	2483850074	Play_sfx_ttk_character_atk			\Default Work Unit\ttk\Play_sfx_ttk_character_atk	
+	2486513092	Play_sfx_ttk_character_qte			\Default Work Unit\ttk\Play_sfx_ttk_character_qte	
+	2815684931	Play_sfx_ui_like_click			\Default Work Unit\ui\Play_sfx_ui_like_click	
+	2859781243	Play_sfx_ui_store_click			\Default Work Unit\ui\Play_sfx_ui_store_click	
+	3016494557	Play_music_ttk			\Default Work Unit\music\Play_music_ttk	
+	3063155929	Play_sfx_ttk_skill_hit			\Default Work Unit\ttk\Play_sfx_ttk_skill_hit	
+	3161202002	Play_sfx_ui_transition			\Default Work Unit\ui\Play_sfx_ui_transition	
+	3617702358	Play_sfx_ui_sub_select			\Default Work Unit\ui\Play_sfx_ui_sub_select	
+	3680620443	Play_music_neutral			\Default Work Unit\music\Play_music_neutral	
+	3720881331	Play_sfx_ttk_character_skill			\Default Work Unit\ttk\Play_sfx_ttk_character_skill	
+	3786105271	Play_sfx_ui_back_click			\Default Work Unit\ui\Play_sfx_ui_back_click	
+	3854155799	Play_footsteps			\Default Work Unit\ttk\Play_footsteps	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	24693910	sfx_ui_load	D:\ue\GameProject\GameProject_WwiseProject\.cache\85\{85C9E001-3C4F-1D1C-1479-E0D5BCFF71B4}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_load		75172
+	39251604	sfx_ttk_character_footsteps_03	D:\ue\GameProject\GameProject_WwiseProject\.cache\53\{5307C811-012E-888F-90E8-97FB27CEBD1D}.wem		\Actor-Mixer Hierarchy\SFX\ttk\character\footsteps\sfx_ttk_character_footsteps_03		12108
+	83462920	sfx_ui_back_click	D:\ue\GameProject\GameProject_WwiseProject\.cache\D4\{D4C58814-8A65-A985-72FB-241D008C7229}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_back_click		40372
+	86752040	sfx_ui_score	D:\ue\GameProject\GameProject_WwiseProject\.cache\D9\{D962BA93-B26F-6C8D-0FF2-6283B385262A}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_score		157576
+	103328755	sfx_ui_store_purchase	D:\ue\GameProject\GameProject_WwiseProject\.cache\2D\{2DD24CB3-A512-3AED-C509-D9DE97246F97}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_store_purchase		47708
+	104262612	sfx_ttk_character_skill	D:\ue\GameProject\GameProject_WwiseProject\.cache\47\{47CA30A7-67E8-A038-AEAF-4C66B4257FB4}.wem		\Actor-Mixer Hierarchy\SFX\ttk\character\sfx_ttk_character_skill		40950
+	165348572	sfx_ui_room_click	D:\ue\GameProject\GameProject_WwiseProject\.cache\07\{076D8998-3D0D-9605-0CB8-23989BBD0AA0}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_room_click		20012
+	245801097	sfx_ui_pause_click	D:\ue\GameProject\GameProject_WwiseProject\.cache\EA\{EADD4304-A5A9-3176-13F1-96FD33DEBEBF}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_pause_click		45878
+	247095426	sfx_ttk_character_atk	D:\ue\GameProject\GameProject_WwiseProject\.cache\A1\{A1ACC20E-6F3B-68CD-A53E-36D3121F6A11}.wem		\Actor-Mixer Hierarchy\SFX\ttk\character\sfx_ttk_character_atk		16034
+	267397305	sfx_ttk_shoot_hit	D:\ue\GameProject\GameProject_WwiseProject\.cache\55\{551C979F-2642-DE24-7C62-B5D4C5CCC516}.wem		\Actor-Mixer Hierarchy\SFX\ttk\hit\sfx_ttk_shoot_hit		86866
+	280317028	sfx_ui_sub_click	D:\ue\GameProject\GameProject_WwiseProject\.cache\2A\{2AC85532-4956-A9E7-FED6-94C7A984A041}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_sub_click		22120
+	289539542	sfx_ttk_skill_hit	D:\ue\GameProject\GameProject_WwiseProject\.cache\0C\{0C730B7A-A535-751E-9B41-93623B8994A4}.wem		\Actor-Mixer Hierarchy\SFX\ttk\hit\sfx_ttk_skill_hit		47558
+	294819394	sfx_ui_store_click	D:\ue\GameProject\GameProject_WwiseProject\.cache\D7\{D7790E8B-1C82-4E98-EA90-A623AC97113E}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_store_click		9352
+	420929615	music_negative	D:\ue\GameProject\GameProject_WwiseProject\.cache\BA\{BA7FA7E9-4A2E-8445-3437-FA1B45A015D6}.wem		\Interactive Music Hierarchy\Default Work Unit\music_negative\music_negative		468228
+	428822110	sfx_ttk_character_hit	D:\ue\GameProject\GameProject_WwiseProject\.cache\CB\{CB88AFDC-6C11-B92E-ED1D-A293CB895CF2}.wem		\Actor-Mixer Hierarchy\SFX\ttk\character\sfx_ttk_character_hit		63058
+	576099723	music_positive	D:\ue\GameProject\GameProject_WwiseProject\.cache\E3\{E36757C5-9382-039C-A9F3-BB8BF93D850F}.wem		\Interactive Music Hierarchy\Default Work Unit\music_positive\music_positive		746760
+	578227773	sfx_ui_room_select	D:\ue\GameProject\GameProject_WwiseProject\.cache\45\{45B35B64-1AE5-5910-C9F1-DAC6EDBF0E6D}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_room_select		2702
+	601315473	sfx_ttk_character_shoot	D:\ue\GameProject\GameProject_WwiseProject\.cache\60\{60E49C98-BC22-A42D-CC58-0F549A6B776B}.wem		\Actor-Mixer Hierarchy\SFX\ttk\character\sfx_ttk_character_shoot		39548
+	637362438	sfx_ui_notification	D:\ue\GameProject\GameProject_WwiseProject\.cache\B3\{B3D83CA3-B1C4-1669-D788-7BE322215DF0}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_notification		35040
+	677090725	music_neutral	D:\ue\GameProject\GameProject_WwiseProject\.cache\80\{8069BE1B-42A0-F8B1-AB3D-1DCFB2D8BBD1}.wem		\Interactive Music Hierarchy\Default Work Unit\music_neutral\music_neutral		866572
+	700496912	sfx_ttk_character_footsteps_02	D:\ue\GameProject\GameProject_WwiseProject\.cache\03\{03D59882-8182-4C7C-1750-CB34C1DBC352}.wem		\Actor-Mixer Hierarchy\SFX\ttk\character\footsteps\sfx_ttk_character_footsteps_02		12780
+	756378497	sfx_ttk_atk_hit	D:\ue\GameProject\GameProject_WwiseProject\.cache\58\{5894C44C-02E6-AB87-04B6-5D0475D35ADA}.wem		\Actor-Mixer Hierarchy\SFX\ttk\hit\sfx_ttk_atk_hit		28692
+	779684085	sfx_ui_transition	D:\ue\GameProject\GameProject_WwiseProject\.cache\A7\{A734F97F-B3E1-8DB7-3CE4-F0A523C1816D}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_transition		85670
+	891342633	sfx_ttk_character_footsteps_04	D:\ue\GameProject\GameProject_WwiseProject\.cache\20\{2080E84A-FD8E-7755-F143-6C9BFDA6F435}.wem		\Actor-Mixer Hierarchy\SFX\ttk\character\footsteps\sfx_ttk_character_footsteps_04		12174
+	895655049	sfx_ui_like_click	D:\ue\GameProject\GameProject_WwiseProject\.cache\2A\{2AF8D940-2A6F-3FC0-D730-D0425AD4D661}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_like_click		12686
+	932016643	sfx_ui_sub_select	D:\ue\GameProject\GameProject_WwiseProject\.cache\43\{436D0ED9-A05B-4BB1-B283-209A6936837A}.wem		\Actor-Mixer Hierarchy\SFX\ui\sfx_ui_sub_select		3954
+	940851175	sfx_ttk_character_collect	D:\ue\GameProject\GameProject_WwiseProject\.cache\F7\{F7648119-241C-E32C-F02B-C21B5ADB0523}.wem		\Actor-Mixer Hierarchy\SFX\ttk\character\sfx_ttk_character_collect		20926
+	1012665419	sfx_ttk_character_footsteps_01	D:\ue\GameProject\GameProject_WwiseProject\.cache\94\{94773C65-84C3-8025-BDFE-B9E669D1549F}.wem		\Actor-Mixer Hierarchy\SFX\ttk\character\footsteps\sfx_ttk_character_footsteps_01		12526
+	1018280089	sfx_ttk_character_qte	D:\ue\GameProject\GameProject_WwiseProject\.cache\70\{70D2248C-944E-85B0-C30F-1CF887AD985F}.wem		\Actor-Mixer Hierarchy\SFX\ttk\character\sfx_ttk_character_qte		119792
+
+Streamed Audio	ID	Name	Audio source file	Generated audio file	Wwise Object Path	Notes
+	71784469	music_ttk	D:\ue\GameProject\GameProject_WwiseProject\.cache\A4\{A4634A80-BF86-EDAE-5752-AD6A7A686F40}.wem	71784469.wem	\Interactive Music Hierarchy\Default Work Unit\music_ttk\music_ttk\music_ttk	
+	707488342	music_main	D:\ue\GameProject\GameProject_WwiseProject\.cache\00\{0075C28D-2848-8464-1E27-BD4655FF9AC0}.wem	707488342.wem	\Interactive Music Hierarchy\Default Work Unit\music_main\music_main\music_main	
+

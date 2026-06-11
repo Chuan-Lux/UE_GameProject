@@ -34,8 +34,7 @@ public:
 
 
 
-
-
+public:
 
 	virtual void OnDeath_Implementation() override;
 
@@ -56,6 +55,11 @@ public:
 	UFUNCTION(BlueprintCallable)
 	APaperZDEnemy* LookForEnemy(float MaxDistance, TArray<AActor*>Actors);
 
+	//球体碰撞
+	UFUNCTION(BlueprintCallable)
+	void SphereObjectsReturnResult(FVector Location, float Radius);
+	UFUNCTION(BlueprintImplementableEvent)
+	void SpehereHitLoopBody(FHitResult HitResult);
 
 	////Property	
 	//角色状态设置
@@ -130,6 +134,10 @@ public:
 	UFUNCTION(BlueprintPure)
 	FDamageStruct GetCharacterBasicData(EAttackType AttackType);
 
+	//获取角色数据并重新设置
+	UFUNCTION(BlueprintCallable)
+	void ResetCharacterAttackData(float Extra_ATK,float Extra_Critical,float Extra_Melee,float Extra_Range);
+
 	//GAS
 protected:
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "GAS", meta = (AllowPrivateAccess = "true"))
@@ -152,10 +160,10 @@ public:
 	void GA_Dash(TSubclassOf<UGameplayAbility> GA_Dash);
 
 	UFUNCTION(BlueprintCallable, Category = "Abilities")
-	void GA_Attack_1(TSubclassOf<UGameplayAbility> GA_Attack_1);
+	void GA_Attack_Melee(TSubclassOf<UGameplayAbility> GA_Attack_Melee);
 
 	UFUNCTION(BlueprintCallable, Category = "Abilities")
-	void GA_Attack_2(TSubclassOf<UGameplayAbility> GA_Attack_2);
+	void GA_Attack_Random(TSubclassOf<UGameplayAbility> GA_Attack_Random);
 
 	UFUNCTION(BlueprintCallable, Category = "Abilities")
 	void GA_QTE(TSubclassOf<UGameplayAbility> GA_QTE);

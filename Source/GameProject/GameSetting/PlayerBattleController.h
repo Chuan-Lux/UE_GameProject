@@ -45,10 +45,31 @@ private:
 	UPROPERTY(BlueprintReadOnly, Category = "Score", meta = (AllowPrivateAccess = "true"))
 	float Score = 0;
 
+	UPROPERTY(BlueprintReadOnly, Category = "Score", meta = (AllowPrivateAccess = "true"))
+	float KillEnemy = 0;
+
 public:
 	UFUNCTION(BlueprintCallable, Category = "Score")
 	void AddScore(float Add)
 	{
 		Score += Add;
+	}
+
+	UFUNCTION(BlueprintCallable, Category = "Score")
+	void AddKillEnemy(float Add)
+	{
+		KillEnemy+= Add;
+	}
+
+	UFUNCTION(BlueprintPure, Category = "Score")
+	float GetKillEnemy()
+	{
+		return KillEnemy;
+	}
+
+	UFUNCTION(BlueprintCallable, Category = "Score")
+	void ResetKillEnemy()
+	{
+		KillEnemy =0;
 	}
 };

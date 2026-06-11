@@ -114,6 +114,9 @@ void UMyBlueprintFunctionLibrary::ActorToCamera(AActor* Source)
 	Source->SetActorRotation(NewRotation);
 }
 
+
+
+
 float UMyBlueprintFunctionLibrary::DamageCalculation(const float ATK, const float Increase, const float Critical_Rate, const float Critical_Damage, bool& bIsCritical)
 {
 	float RandomValue = FMath::FRand();
@@ -125,6 +128,13 @@ float UMyBlueprintFunctionLibrary::DamageCalculation(const float ATK, const floa
 	}
 	float damage = ATK * (1 + Increase) * Critical;
 	return damage;
+}
+
+bool UMyBlueprintFunctionLibrary::Probability(float Prob)
+{
+	float RandomValue = FMath::FRand();
+	bool bIsTrigger = RandomValue <= Prob;
+	return bIsTrigger;
 }
 
 void UMyBlueprintFunctionLibrary::ExcuteNotify(const UObject* WorldContextObject, TSubclassOf<UEffectNotify> NotifyClass)

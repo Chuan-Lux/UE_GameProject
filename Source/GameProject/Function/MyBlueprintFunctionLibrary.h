@@ -39,10 +39,14 @@ public:
 	//UFUNCTION(BlueprintPure)
 	//static UPaperZDAnimSequence* PaperAnim();
 
+	
 
 	//…À∫¶º∆À„
 	UFUNCTION(BlueprintPure)
 	static float DamageCalculation(const float ATK, const float Increase, const float Critical_Rate, const float Critical_Damage,bool& bIsCritical);
+
+	UFUNCTION(BlueprintPure)
+	static bool Probability(float Prob);
 
 	//÷¥––Notify
 	UFUNCTION(BlueprintCallable, Category = "Notify")

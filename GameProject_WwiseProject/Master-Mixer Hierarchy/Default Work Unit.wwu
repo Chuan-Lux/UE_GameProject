@@ -1,16 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
-<WwiseDocument Type="WorkUnit" ID="{25EF1585-5CB0-4E81-9FE8-71F183D8F76F}" SchemaVersion="123">
-	<Busses>
-		<WorkUnit Name="Default Work Unit" ID="{25EF1585-5CB0-4E81-9FE8-71F183D8F76F}" PersistMode="Standalone">
-			<ChildrenList>
-				<Bus Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}">
-					<ReferenceList>
-						<Reference Name="AudioDevice" PluginName="System" CompanyID="0" PluginID="174" PluginType="7">
-							<ObjectRef Name="System" ID="{226C73A2-16A0-42A2-B105-9E74908B707D}" WorkUnitID="{09F3ACD9-8F7C-4D16-A723-E3A66711FD2B}"/>
-						</Reference>
-					</ReferenceList>
-				</Bus>
-			</ChildrenList>
-		</WorkUnit>
-	</Busses>
-</WwiseDocument>
+version https://git-lfs.github.com/spec/v1
+oid sha256:d60a192008db0428d39a5e884b12c810f17ab88b31419c775103465dfe63d6da
+size 1437

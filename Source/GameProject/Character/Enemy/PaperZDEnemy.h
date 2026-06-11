@@ -22,8 +22,19 @@ class GAMEPROJECT_API APaperZDEnemy : public APaperZDCharacter, public IHealthIn
 {
 	GENERATED_BODY()
 
+
 public:
 	APaperZDEnemy();
+
+protected:
+	virtual void BeginPlay() override;
+
+public:
+	virtual void Tick(float DeltaTime) override;
+
+
+
+public:
 
 	UFUNCTION(BlueprintCallable)
 	void Initialize();

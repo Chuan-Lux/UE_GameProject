@@ -7,7 +7,10 @@
 #include "ActorComponent/GethitComp.h"
 #include "AbilitySystemComponent.h"
 #include "Abilities/GameplayAbility.h"
+#include "Character/Player/PaperZDPlayer.h"
+#include "Function/MyBlueprintFunctionLibrary.h"
 #include "GAS/BasicAttributeSet.h"
+
 
 
 
@@ -19,6 +22,21 @@ APaperZDEnemy::APaperZDEnemy()
 	GethitComp = CreateDefaultSubobject<UGethitComp>(TEXT("GethitComp"));
 	AbilitySystemComp = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystemComp"));
 }
+
+void APaperZDEnemy::BeginPlay()
+{
+	Super::BeginPlay();
+	Initialize();
+	HealthComp->BroadDeath.AddDynamic(this,&APaperZDEnemy::OnDeath);
+}
+
+void APaperZDEnemy::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	UMyBlueprintFunctionLibrary::ActorToCamera(this);
+}
+
 
 void APaperZDEnemy::Initialize()
 {
@@ -32,6 +50,14 @@ void APaperZDEnemy::Initialize()
 	{
 		FGameplayAbilitySpec AbilitySpec = FGameplayAbilitySpec(Ability);
 		AbilitySystemComp->GiveAbility(AbilitySpec);
+	}
+
+	//ÉèÖÃTarget
+	APlayerController* PC = GetWorld()->GetFirstPlayerController();
+	if (PC && PC->GetPawn())
+	{
+		APaperZDPlayer* PlayerCharacter = Cast<APaperZDPlayer>(PC->GetPawn());
+		Target = PlayerCharacter;
 	}
 }
 

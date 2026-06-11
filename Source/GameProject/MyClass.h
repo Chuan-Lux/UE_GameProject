@@ -78,10 +78,10 @@ struct FMissionStruct
 	GENERATED_BODY()
 
 	UPROPERTY(BlueprintReadWrite,EditAnywhere)
-	EMissionType MissonType;
+	EMissionType MissonType=EMissionType::None;
 
 	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float Progress;
+	float Progress=0.f;
 };
 
 //½ÇÉ«¹¥»÷Êý¾Ý

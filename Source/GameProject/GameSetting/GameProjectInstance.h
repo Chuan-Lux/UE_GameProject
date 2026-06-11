@@ -12,11 +12,11 @@ struct FFans
 {
 	GENERATED_BODY()
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float Redfan;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (ClampMin = "0", ClampMax = "100"))
+	float Redfan=0.0f;
 
-	UPROPERTY(BlueprintReadWrite, EditAnywhere)
-	float Blackfan;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere,meta = (ClampMin = "0", ClampMax = "100"))
+	float Blackfan=0.0f;
 };
 /**
  * 
@@ -31,7 +31,7 @@ class GAMEPROJECT_API UGameProjectInstance : public UGameInstance
 	
 public:
 	//粉丝管理数据
-	UPROPERTY(EditAnywhere, Category = "GrowthData")
+	UPROPERTY(EditAnywhere,BlueprintReadOnly, Category = "GrowthData")
 	FFans Fan;
 
 	UFUNCTION(BlueprintCallable, Category = "GrowthData")
@@ -102,5 +102,5 @@ public:
 	void Time_Extra_Multiplier(float Int, float Ded, float Prestige, float Purchasing, float STA);
 
 	UFUNCTION(BlueprintPure)
-	float AddAbility(float BasicValue, float AddValue, const EGrowthData GrowthData);
+	float AddAbility(float BasicValue, float AddValue, const EGrowthData GrowthData,float Multipy);
 };

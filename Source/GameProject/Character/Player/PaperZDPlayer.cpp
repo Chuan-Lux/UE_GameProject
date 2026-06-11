@@ -10,6 +10,7 @@
 #include "AbilitySystemComponent.h"
 #include "Abilities/GameplayAbility.h"
 #include "Character/Enemy/PaperZDEnemy.h"
+#include "GameSetting/PlayerBattleController.h"
 #include "GAS/BasicAttributeSet.h"
 
 
@@ -23,6 +24,12 @@ APaperZDPlayer::APaperZDPlayer()
 	AbilitySystem = CreateDefaultSubobject<UAbilitySystemComponent>(TEXT("AbilitySystem"));
 
 	NowState = ECharacterState::None;
+
+	ATK = 20;
+	Critical_Damage = 1;
+	Melee_Damage_Increase = 0;
+	Ranged_Damage_Increase = 0;
+	Critical_Rate = 0.25;
 }
 
 void APaperZDPlayer::BeginPlay()
@@ -30,6 +37,12 @@ void APaperZDPlayer::BeginPlay()
 	Super::BeginPlay();
 
 	Initialize();
+	APlayerBattleController* PlayerController = Cast<APlayerBattleController>(GetController());
+	PlayerController->ResetKillEnemy();  //重置消灭数量
+	InputRecorder->InsertDirectionHistory(EInputDirection::Down);
+
+	HealthComp->BroadDeath.AddDynamic(this, &APaperZDPlayer::OnDeath);
+
 }
 
 void APaperZDPlayer::Tick(float DeltaTime)
@@ -101,6 +114,37 @@ APaperZDEnemy* APaperZDPlayer::LookForEnemy(float MaxDistance, TArray<AActor*> A
 	return CurrentEnemy;
 }
 
+void APaperZDPlayer::SphereObjectsReturnResult(FVector Location, float Radius)
+{
+	TArray<FHitResult> OutHits;
+
+	FCollisionObjectQueryParams ObjectQueryParams;
+	ObjectQueryParams.AddObjectTypesToQuery(ECC_Pawn);
+
+
+	FCollisionQueryParams QueryParams;
+	QueryParams.bReturnPhysicalMaterial = false;
+	QueryParams.AddIgnoredActor(this);
+
+	FCollisionShape CollisionShape = FCollisionShape::MakeSphere(Radius);
+
+	GetWorld()->SweepMultiByObjectType(
+		OutHits,
+		Location,      // Start
+		Location,      // End (相同位置表示球体检测)
+		FQuat::Identity,    // 旋转
+		ObjectQueryParams,  // Object Types
+		CollisionShape,     // 球体形状
+		QueryParams
+	);
+
+	
+	for (const auto& Hit : OutHits)
+	{
+		SpehereHitLoopBody(Hit);
+	}
+}
+
 void APaperZDPlayer::ReplaceSkillComponent(TSubclassOf<USkillComponent> NewSkill)
 {
 	if (!NewSkill || !GetWorld())
@@ -129,7 +173,7 @@ FDamageStruct APaperZDPlayer::GetCharacterBasicData(EAttackType AttackType)
 	switch (AttackType)
 	{
 	case EAttackType::None:
-		Stats.Increase = 1;
+		Stats.Increase = 0;
 		break;
 	case EAttackType::Melee:
 		Stats.Increase = Melee_Damage_Increase;
@@ -143,19 +187,27 @@ FDamageStruct APaperZDPlayer::GetCharacterBasicData(EAttackType AttackType)
 	return Stats;
 }
 
+void APaperZDPlayer::ResetCharacterAttackData(float Extra_ATK, float Extra_Critical, float Extra_Melee, float Extra_Range)
+{
+	ATK += (Extra_ATK / 100 * ATK);
+	Critical_Rate += (Extra_Critical / 200);
+	Melee_Damage_Increase += Extra_Melee / 100;
+	Ranged_Damage_Increase += Extra_Range / 100;
+}
+
 void APaperZDPlayer::GA_Dash(TSubclassOf<UGameplayAbility> GA_Dash)
 {
 	AbilitySystem->TryActivateAbilityByClass(GA_Dash,true);
 }
 
-void APaperZDPlayer::GA_Attack_1(TSubclassOf<UGameplayAbility> GA_Attack_1)
+void APaperZDPlayer::GA_Attack_Melee(TSubclassOf<UGameplayAbility> GA_Attack_Melee)
 {
-	AbilitySystem->TryActivateAbilityByClass(GA_Attack_1, true);
+	AbilitySystem->TryActivateAbilityByClass(GA_Attack_Melee, true);
 }
 
-void APaperZDPlayer::GA_Attack_2(TSubclassOf<UGameplayAbility> GA_Attack_2)
+void APaperZDPlayer::GA_Attack_Random(TSubclassOf<UGameplayAbility> GA_Attack_Random)
 {
-	AbilitySystem->TryActivateAbilityByClass(GA_Attack_2, true);
+	AbilitySystem->TryActivateAbilityByClass(GA_Attack_Random, true);
 }
 
 void APaperZDPlayer::GA_QTE(TSubclassOf<UGameplayAbility> GA_QTE)

@@ -1,0 +1,36 @@
+{
+ "ProjectInfo": {
+  "Project": {
+   "Name": "GameProject_WwiseProject",
+   "GUID": "{40193D66-7B07-4318-8E36-CDBAF48B3FEC}",
+   "Generator": "2024.1.11.9010"
+  },
+  "CacheRoot": "../.cache",
+  "Platforms": [
+   {
+    "Name": "Mac",
+    "GUID": "{C0AA3415-4B34-4C7A-93FB-0C15402F2714}",
+    "BasePlatform": "Mac",
+    "BasePlatformGUID": "{9C6217D5-DD11-4795-87C1-6CE02853C540}",
+    "Path": "Mac"
+   },
+   {
+    "Name": "Windows",
+    "GUID": "{83D1864F-426B-4AE5-A4C4-25F50752AD80}",
+    "BasePlatform": "Windows",
+    "BasePlatformGUID": "{6E0CB257-C6C8-4C5C-8366-2740DFC441EB}",
+    "Path": "Windows"
+   }
+  ],
+  "Languages": [
+   {
+    "Name": "English(US)",
+    "Id": "684519430",
+    "GUID": "{B6209CF9-9451-47AF-813E-98172AEE714E}",
+    "Default": "true",
+    "UseAsStandIn": "true"
+   }
+  ],
+  "FileHash": "{8D50471F-BC9A-2CBA-0172-693ABF55576D}"
+ }
+}

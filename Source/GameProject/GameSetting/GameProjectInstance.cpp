@@ -108,26 +108,26 @@ void UGameProjectInstance::Time_Extra_Multiplier(float Int, float Ded, float Pre
 	//this->OnUpdateDayProgress.__Internal_AddDynamic(this,)
 }
 
-float UGameProjectInstance::AddAbility(float BasicValue, float AddValue, const EGrowthData GrowthData)
+float UGameProjectInstance::AddAbility(float BasicValue, float AddValue, const EGrowthData GrowthData, float Multipy)
 {
 	switch (GrowthData)
 	{
 	case EGrowthData::None:
 		break;
 	case EGrowthData::Intelligence:
-		return BasicValue+AddValue*Multiplier_Int;
+		return BasicValue+AddValue*Multiplier_Int*Multipy;
 		break;
 	case EGrowthData::Dedication:
-		return BasicValue + AddValue * Multiplier_Ded;
+		return BasicValue + AddValue * Multiplier_Ded * Multipy;
 		break;
 	case EGrowthData::Prestige:
-		return BasicValue + AddValue * Multiplier_Prestige;
+		return BasicValue + AddValue * Multiplier_Prestige * Multipy;
 		break;
 	case EGrowthData::Purchasing:
-		return BasicValue + AddValue * Multiplier_Purchasing;
+		return BasicValue + AddValue * Multiplier_Purchasing * Multipy;
 		break;
 	case EGrowthData::Stamina:
-		return BasicValue + AddValue * Multiplier_STA;
+		return BasicValue + AddValue * Multiplier_STA * Multipy;
 		break;
 	}
 	return (BasicValue + AddValue);
